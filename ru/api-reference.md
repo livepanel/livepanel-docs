@@ -40,6 +40,38 @@ curl -s https://panel.example.uz/api/v2/me -H "Authorization: Bearer $LP_TOKEN"
 }
 ```
 
+## Работа с ИИ
+
+Документация API сделана так, чтобы её понимали и ИИ-ассистенты (ChatGPT, Claude, Gemini, Copilot и другие). Дайте ИИ что-то одно из этого — он сам найдёт нужные методы, поля и права и напишет код на PHP, Node.js, Python или Bash:
+
+| Что | Адрес |
+|---|---|
+| Спецификация OpenAPI 3.1 (самая точная) | `https://wiki.livepanel.uz/openapi.json` |
+| Эта страница в Markdown | `https://wiki.livepanel.uz/ru/api-reference.md` |
+| Вся документация одним файлом | `https://wiki.livepanel.uz/llms-full.txt?lang=ru` |
+| Индекс для ИИ ([llms.txt](https://llmstxt.org)) | `https://wiki.livepanel.uz/llms.txt` |
+
+Кнопка **«Копировать для ИИ»** на каждой странице wiki копирует страницу в Markdown — достаточно вставить её в чат с ИИ.
+
+Пример запроса:
+
+```text
+По LivePanel API v2 из https://wiki.livepanel.uz/openapi.json напиши PHP-скрипт:
+создать новый аккаунт, задать ему лимиты 2 сайта и 3 базы,
+создать сайт shop.example.uz на PHP 8.3 и получить сертификат Let's Encrypt.
+Токен в переменной окружения LP_TOKEN, панель — https://panel.example.uz:6563.
+Каждый код {"error": "..."} выводи понятным сообщением.
+```
+
+Главные правила для ИИ, пишущего код:
+
+- Базовый адрес `https://<панель>:6563/api/v2`, заголовок `Authorization: Bearer lp_…`.
+- Тело запроса — JSON; неизвестное поле даёт `400 invalid_input`.
+- Ошибки приходят как `{"error": "код"}`; `402 upgrade_required` — панель не на Premium.
+- Перед изменением настроек прочитайте их через `GET` и отправьте изменённый объект обратно (`/sites/settings`, `/dns` `save`).
+- После `apply` файрвола отправьте `confirm` в течение минуты.
+- Пути к файлам — относительно домашней папки пользователя сайта: `www/<домен>/…`.
+
 ## Клиентский код (PHP, Node.js, Bash)
 
 Все примеры ниже используют эти небольшие помощники. Не пишите токен в коде — храните его в переменной окружения (`LP_TOKEN`).

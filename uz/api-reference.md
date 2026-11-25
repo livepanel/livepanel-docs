@@ -40,6 +40,38 @@ curl -s https://panel.example.uz/api/v2/me -H "Authorization: Bearer $LP_TOKEN"
 }
 ```
 
+## Sun’iy intellekt (AI) bilan ishlash
+
+API hujjati AI yordamchilar (ChatGPT, Claude, Gemini, Copilot va boshqalar) ham tushunadigan qilib berilgan. AI’ga quyidagilardan birini bering — u to‘g‘ri endpoint, maydon va ruxsatlarni o‘zi topib, PHP, Node.js, Python yoki Bash’da kod yozadi:
+
+| Nima | Manzil |
+|---|---|
+| OpenAPI 3.1 spetsifikatsiyasi (eng aniq) | `https://wiki.livepanel.uz/openapi.json` |
+| Shu sahifa Markdown’da | `https://wiki.livepanel.uz/uz/api-reference.md` |
+| Butun qo‘llanma bitta faylda | `https://wiki.livepanel.uz/llms-full.txt?lang=uz` |
+| AI uchun indeks ([llms.txt](https://llmstxt.org)) | `https://wiki.livepanel.uz/llms.txt` |
+
+Har bir wiki sahifasidagi **«AI uchun nusxalash»** tugmasi sahifani Markdown ko‘rinishida nusxalaydi — AI chatiga joylashtirish kifoya.
+
+Namunaviy so‘rov:
+
+```text
+https://wiki.livepanel.uz/openapi.json dagi LivePanel API v2 asosida PHP skript yoz:
+yangi akkaunt yaratsin, unga 2 ta sayt va 3 ta baza limitini qo‘ysin,
+shop.example.uz saytini PHP 8.3 da yaratib, Let’s Encrypt SSL olsin.
+Token LP_TOKEN muhit o‘zgaruvchisida, panel manzili https://panel.example.uz:6563.
+Har bir xatoni {"error": "..."} kodidan tushunarli xabar qilib chiqarsin.
+```
+
+Kod yozuvchi AI uchun asosiy qoidalar:
+
+- Asosiy manzil `https://<panel>:6563/api/v2`, sarlavha `Authorization: Bearer lp_…`.
+- So‘rov tanasi JSON; noma’lum maydon yuborilsa — `400 invalid_input`.
+- Javobda xato bo‘lsa — `{"error": "kod"}`; `402 upgrade_required` — panel Premium emas.
+- Sozlamani o‘zgartirishdan oldin uni `GET` bilan o‘qing va o‘zgartirilgan obyektni qaytaring (`/sites/settings`, `/dns` `save`).
+- Firewall `apply` dan keyin bir daqiqada `confirm` yuboring.
+- Fayl yo‘llari sayt foydalanuvchisining uy papkasiga nisbatan: `www/<domen>/…`.
+
 ## Mijoz kodi (PHP, Node.js, Bash)
 
 Quyidagi misollarning hammasi shu kichik yordamchilardan foydalanadi. Tokenni kodga yozmang — muhit o‘zgaruvchisida (`LP_TOKEN`) saqlang.

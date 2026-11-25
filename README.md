@@ -12,6 +12,7 @@ The knowledge base of [LivePanel](https://livepanel.uz), the hosting control pan
 
 - `{lang}/{slug}.md` — one article; the first `# heading` is its title.
 - `toc.json` — the sections and the order of the articles, with their titles in every language.
+- `api/openapi-v2.json` — the OpenAPI 3.1 description of API v2, built by `api/build_openapi.py` (keep its route list in step with the panel’s `internal/app/api_v2.go`). Served at https://wiki.livepanel.uz/openapi.json.
 - `images/` — the pictures (taken from the English interface), shared by all languages. An article links them as `../images/name.png`.
 
 ## Contributing

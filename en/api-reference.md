@@ -40,6 +40,38 @@ curl -s https://panel.example.uz/api/v2/me -H "Authorization: Bearer $LP_TOKEN"
 }
 ```
 
+## Working with AI
+
+The API documentation is made so AI assistants (ChatGPT, Claude, Gemini, Copilot and others) understand it too. Give the AI one of these — it finds the right endpoints, fields and scopes and writes code in PHP, Node.js, Python or Bash:
+
+| What | Address |
+|---|---|
+| OpenAPI 3.1 specification (the most precise) | `https://wiki.livepanel.uz/openapi.json` |
+| This page as Markdown | `https://wiki.livepanel.uz/en/api-reference.md` |
+| The whole documentation in one file | `https://wiki.livepanel.uz/llms-full.txt` |
+| Index for AI ([llms.txt](https://llmstxt.org)) | `https://wiki.livepanel.uz/llms.txt` |
+
+The **Copy for AI** button on every wiki page copies the page as Markdown — just paste it into the AI chat.
+
+An example prompt:
+
+```text
+Using LivePanel API v2 from https://wiki.livepanel.uz/openapi.json, write a PHP script that
+creates a new account, sets its limits to 2 sites and 3 databases,
+creates the site shop.example.uz on PHP 8.3 and gets a Let's Encrypt certificate.
+The token is in the LP_TOKEN environment variable, the panel is https://panel.example.uz:6563.
+Turn every {"error": "..."} code into a clear message.
+```
+
+Key rules for an AI writing code:
+
+- Base URL `https://<panel>:6563/api/v2`, header `Authorization: Bearer lp_…`.
+- JSON bodies; an unknown field gives `400 invalid_input`.
+- Errors come as `{"error": "code"}`; `402 upgrade_required` means the panel is not Premium.
+- Before changing settings, read them with `GET` and send the changed object back (`/sites/settings`, `/dns` `save`).
+- After a firewall `apply`, send `confirm` within a minute.
+- File paths are relative to the site user’s home folder: `www/<domain>/…`.
+
 ## Client code (PHP, Node.js, Bash)
 
 All examples below use these small helpers. Do not put the token in the code — keep it in an environment variable (`LP_TOKEN`).
