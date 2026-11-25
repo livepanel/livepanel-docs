@@ -1,6 +1,6 @@
 # LivePanel documentation
 
-The knowledge base of [LivePanel](https://livepanel.uz), the hosting control panel. The articles are published at **[livepanel.uz/kb](https://livepanel.uz/kb)**.
+The knowledge base of [LivePanel](https://livepanel.uz), the hosting control panel. The articles are published at **[wiki.livepanel.uz](https://wiki.livepanel.uz)**.
 
 | Language | Folder |
 |---|---|
