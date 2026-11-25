@@ -1,0 +1,65 @@
+{
+  "sections": [
+    {
+      "title": { "uz": "Boshlash", "ru": "Начало работы", "en": "Getting started" },
+      "pages": [
+        { "slug": "introduction", "title": { "uz": "LivePanel nima", "ru": "Что такое LivePanel", "en": "What is LivePanel" } },
+        { "slug": "installation", "title": { "uz": "O‘rnatish", "ru": "Установка", "en": "Installation" } },
+        { "slug": "first-login", "title": { "uz": "Birinchi kirish va interfeys", "ru": "Первый вход и интерфейс", "en": "First sign-in and the interface" } },
+        { "slug": "license", "title": { "uz": "Litsenziya va tariflar", "ru": "Лицензия и тарифы", "en": "License and plans" } }
+      ]
+    },
+    {
+      "title": { "uz": "Saytlar", "ru": "Сайты", "en": "Sites" },
+      "pages": [
+        { "slug": "create-site", "title": { "uz": "Sayt yaratish", "ru": "Создание сайта", "en": "Creating a site" } },
+        { "slug": "site-management", "title": { "uz": "Saytni boshqarish", "ru": "Управление сайтом", "en": "Managing a site" } },
+        { "slug": "site-settings", "title": { "uz": "Sayt sozlamalari", "ru": "Настройки сайта", "en": "Site settings" } },
+        { "slug": "file-manager", "title": { "uz": "Fayl menejeri", "ru": "Файловый менеджер", "en": "File manager" } },
+        { "slug": "ssl", "title": { "uz": "SSL sertifikatlar", "ru": "SSL-сертификаты", "en": "SSL certificates" } },
+        { "slug": "dns", "title": { "uz": "Domenlar va DNS", "ru": "Домены и DNS", "en": "Domains and DNS" } },
+        { "slug": "ftp-ssh", "title": { "uz": "FTP, SFTP va SSH", "ru": "FTP, SFTP и SSH", "en": "FTP, SFTP and SSH" } },
+        { "slug": "cron", "title": { "uz": "Rejalashtiruvchi (cron)", "ru": "Планировщик (cron)", "en": "Scheduler (cron)" } },
+        { "slug": "logs", "title": { "uz": "Loglar", "ru": "Журналы", "en": "Logs" } },
+        { "slug": "site-security", "title": { "uz": "Sayt xavfsizligi va skanerlash", "ru": "Безопасность сайта и сканирование", "en": "Site security and scanning" } }
+      ]
+    },
+    {
+      "title": { "uz": "Ilovalar va dasturlash", "ru": "Приложения и разработка", "en": "Applications and development" },
+      "pages": [
+        { "slug": "app-installer", "title": { "uz": "CMS va frameworklarni o‘rnatish", "ru": "Установка CMS и фреймворков", "en": "Installing CMS and frameworks" } },
+        { "slug": "python-nodejs", "title": { "uz": "Python va Node.js saytlar", "ru": "Сайты на Python и Node.js", "en": "Python and Node.js sites" } },
+        { "slug": "git-deploy", "title": { "uz": "Git orqali deploy", "ru": "Развёртывание из Git", "en": "Deploying from Git" } }
+      ]
+    },
+    {
+      "title": { "uz": "Ma’lumotlar, pochta va zaxira", "ru": "Данные, почта и резервные копии", "en": "Data, mail and backups" },
+      "pages": [
+        { "slug": "databases", "title": { "uz": "Ma’lumotlar bazalari", "ru": "Базы данных", "en": "Databases" } },
+        { "slug": "mail", "title": { "uz": "Pochta", "ru": "Почта", "en": "Mail" } },
+        { "slug": "backups", "title": { "uz": "Zaxira nusxalar", "ru": "Резервные копии", "en": "Backups" } },
+        { "slug": "statistics", "title": { "uz": "Statistika va trafik", "ru": "Статистика и трафик", "en": "Statistics and traffic" } }
+      ]
+    },
+    {
+      "title": { "uz": "Server boshqaruvi", "ru": "Управление сервером", "en": "Server administration" },
+      "pages": [
+        { "slug": "users", "title": { "uz": "Foydalanuvchilar, rollar va limitlar", "ru": "Пользователи, роли и лимиты", "en": "Users, roles and limits" } },
+        { "slug": "applications", "title": { "uz": "Ilovalar (server dasturlari)", "ru": "Приложения (ПО сервера)", "en": "Applications (server software)" } },
+        { "slug": "services", "title": { "uz": "Tizim xizmatlari", "ru": "Системные службы", "en": "System services" } },
+        { "slug": "firewall", "title": { "uz": "Firewall", "ru": "Файрвол", "en": "Firewall" } },
+        { "slug": "terminal", "title": { "uz": "Terminal", "ru": "Терминал", "en": "Terminal" } },
+        { "slug": "panel-settings", "title": { "uz": "Panel sozlamalari va xavfsizlik", "ru": "Настройки панели и безопасность", "en": "Panel settings and security" } },
+        { "slug": "panel-access", "title": { "uz": "Panel manzili va SSL", "ru": "Адрес панели и SSL", "en": "Panel address and SSL" } },
+        { "slug": "api-tokens", "title": { "uz": "API tokenlar va amallar tarixi", "ru": "API-токены и журнал действий", "en": "API tokens and the activity log" } },
+        { "slug": "updates-notifications", "title": { "uz": "Yangilanishlar va xabarnomalar", "ru": "Обновления и уведомления", "en": "Updates and notifications" } }
+      ]
+    },
+    {
+      "title": { "uz": "Yordam", "ru": "Помощь", "en": "Help" },
+      "pages": [
+        { "slug": "faq", "title": { "uz": "Savollar va muammolar", "ru": "Вопросы и решения проблем", "en": "Questions and troubleshooting" } }
+      ]
+    }
+  ]
+}

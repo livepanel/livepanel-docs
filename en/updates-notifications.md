@@ -1,0 +1,34 @@
+# Updates and notifications
+
+## Automatic updates
+
+LivePanel updates itself — nothing to do by hand.
+
+- The server checks for a new version **every 6 hours**. A check also starts when an administrator signs in to the panel.
+- The new version is downloaded from livepanel.uz and its **digital signature** and checksum are verified — an unsigned or altered package is never installed.
+- After installing, the panel checks that it works; if there is a problem, it **rolls back to the previous version automatically**.
+- Sites keep working during the update.
+
+The current version is shown at the bottom of the sign-in page and of the left menu (e.g. `2026.11.25`).
+
+To start an update right away, run on the server:
+
+```bash
+systemctl start livepanel-update.service
+```
+
+> Updates work while the license is active.
+
+## Email notifications
+
+The panel emails you about important events from **push@livepanel.uz**. Messages go to the account’s **recovery email** ([Panel settings and security](panel-settings.md)) in the language the user chose in the panel. The same event is not mailed again and again.
+
+| Event | To |
+|---|---|
+| Sign-in to the account from a new IP address | the account owner |
+| The disk is more than 90% full | the administrator |
+| A server service stopped (Nginx, MySQL, PHP-FPM and others) | the administrator |
+| An SSL certificate has less than 14 days left | the site owner and the administrator |
+| An account was blocked for its RAM limit | the account owner and the administrator |
+
+If no mail arrives, check that the recovery email is set and look in the Spam folder.
