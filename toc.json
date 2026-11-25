@@ -20,8 +20,8 @@
         { "slug": "dns", "title": { "uz": "Domenlar va DNS", "ru": "Домены и DNS", "en": "Domains and DNS" } },
         { "slug": "ftp-ssh", "title": { "uz": "FTP, SFTP va SSH", "ru": "FTP, SFTP и SSH", "en": "FTP, SFTP and SSH" } },
         { "slug": "cron", "title": { "uz": "Rejalashtiruvchi (cron)", "ru": "Планировщик (cron)", "en": "Scheduler (cron)" } },
-        { "slug": "logs", "title": { "uz": "Loglar", "ru": "Журналы", "en": "Logs" } },
-        { "slug": "site-security", "title": { "uz": "Sayt xavfsizligi va skanerlash", "ru": "Безопасность сайта и сканирование", "en": "Site security and scanning" } }
+        { "slug": "logs", "title": { "uz": "Loglar", "ru": "Логи", "en": "Logs" } },
+        { "slug": "site-security", "title": { "uz": "Sayt xavfsizligi va skanerlash", "ru": "Безопасность и сканирование сайта", "en": "Site security and scanning" } }
       ]
     },
     {
