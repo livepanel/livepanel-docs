@@ -4,24 +4,17 @@
 
 ![API tokens](../images/api-tokens.png)
 
-On the **Premium** plan hosting services can be automated through the API: for example, your billing system creates an account and a site for a customer after payment, changes their limits or blocks them when the term ends.
+On the **Premium** plan hosting services can be automated through the API: for example, your billing system creates an account and a site for a customer after payment and sets their limits.
 
 ### Creating a token
 
 1. Open **System → API tokens**.
 2. **Token name** — e.g. “Billing”.
 3. **Valid for (days)**.
-4. **Permissions** — the token can do only the selected actions:
-
-   | Permission | What it does |
-   |---|---|
-   | `users:read` / `users:write` | View / create and change accounts |
-   | `sites:read` / `sites:write` | View / create and change sites |
-   | `limits:read` / `limits:write` | View / change limits |
-
+4. **Permissions** — **Read** and **Write** for every area: sites, files, databases, DNS, mail, FTP, cron, backups, Git, accounts, limits, branding and server. **Read everything** and **Full access** tick them quickly. Only the areas your account may grant are listed; details — [API v2 reference](api-reference.md#scopes).
 5. Click **Create token**. **Copy the token right away** — it is shown only once.
 
-Requests send the token in the `Authorization: Bearer <token>` header. In the **Existing tokens** list you **revoke** a token you no longer need — it stops working immediately.
+Requests send the token in the `Authorization: Bearer <token>` header; every endpoint with examples is in the [API reference](api-reference.md). In the **Existing tokens** list you **revoke** a token you no longer need — it stops working immediately.
 
 > Create tokens with the fewest permissions needed and keep them secret: a token is as powerful as a panel password.
 

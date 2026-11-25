@@ -4,24 +4,17 @@
 
 ![API tokenlar](../images/api-tokens.png)
 
-**Premium** tarifda hosting xizmatlarini API orqali avtomatlashtirish mumkin: masalan, billing tizimingiz to‘lovdan keyin mijozga akkaunt va sayt yaratadi, limitlarini o‘zgartiradi yoki muddati tugaganda bloklaydi.
+**Premium** tarifda hosting xizmatlarini API orqali avtomatlashtirish mumkin: masalan, billing tizimingiz to‘lovdan keyin mijozga akkaunt va sayt yaratadi va uning limitlarini belgilaydi.
 
 ### Token yaratish
 
 1. **Tizim → API tokenlar** sahifasini oching.
 2. **Token nomi** — masalan «Billing».
 3. **Amal qilish muddati (kun)**.
-4. **Ruxsatlar** — token faqat belgilangan amallarni bajara oladi:
-
-   | Ruxsat | Nima qiladi |
-   |---|---|
-   | `users:read` / `users:write` | Akkauntlarni ko‘rish / yaratish, o‘zgartirish |
-   | `sites:read` / `sites:write` | Saytlarni ko‘rish / yaratish, o‘zgartirish |
-   | `limits:read` / `limits:write` | Limitlarni ko‘rish / o‘zgartirish |
-
+4. **Ruxsatlar** — har bir bo‘lim uchun **O‘qish** va **Yozish**: saytlar, fayllar, bazalar, DNS, pochta, FTP, cron, zaxira, Git, akkauntlar, limitlar, brending va server. **«Hammasini o‘qish»** va **«To‘liq kirish»** tugmalari tez belgilaydi. Ro‘yxatda faqat akkauntingizga ruxsat etilgan bo‘limlar chiqadi; batafsil — [API v2 ma’lumotnomasi](api-reference.md#ruxsatlar-scopes).
 5. **«Token yaratish»** ni bosing. **Tokenni darhol nusxalab oling** — u faqat bir marta ko‘rsatiladi.
 
-So‘rovlarda token `Authorization: Bearer <token>` sarlavhasida yuboriladi. **Mavjud tokenlar** ro‘yxatidan keraksiz tokenni **bekor qilasiz** — u darhol ishlamay qoladi.
+So‘rovlarda token `Authorization: Bearer <token>` sarlavhasida yuboriladi; barcha endpointlar va misollar — [API ma’lumotnomasi](api-reference.md). **Mavjud tokenlar** ro‘yxatidan keraksiz tokenni **bekor qilasiz** — u darhol ishlamay qoladi.
 
 > Tokenni ruxsat etilgan eng kam huquqlar bilan yarating va maxfiy saqlang: u panel paroli kabi kuchga ega.
 
