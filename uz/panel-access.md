@@ -18,6 +18,15 @@ Panel dastlab `https://SERVER_IP:6563` manzilida o‘zi yaratgan (self-signed) s
 
 Let’s Encrypt sertifikat bera olmasa, vaqtincha o‘z-o‘zidan imzolangan sertifikat qo‘yiladi va sababi ko‘rsatiladi.
 
+### IP orqali kirish
+
+Manzillar jadvali tagidagi **IP orqali kirish** o‘chirgichi o‘chirilsa, 6563-port tashqaridan yopiladi va panel faqat o‘z manzillari orqali ochiladi. Serverning o‘zidan (`127.0.0.1`) kirish ochiq qoladi.
+
+- O‘chirgich Let’s Encrypt yoki o‘z sertifikati bor manzil qo‘shilganda ishlaydi.
+- Uni o‘chirish uchun panelni manzili orqali oching (masalan `https://panel.example.uz`) — IP orqali ochilgan sahifada o‘chirgich faol emas.
+- Bunday manzil qolmasa (o‘chirilsa yoki sertifikati o‘z-o‘zidan imzolanganga almashtirilsa), IP orqali kirish o‘zi yoqiladi.
+- Manzil ishlamay qolsa, serverda SSH orqali: `livepanel ip-access on` — [Server buyruqlari](console.md).
+
 ## 2. Panel SSL: IP manzil uchun sertifikat
 
 ![Panel SSL](../images/panel-ssl.png)
@@ -31,4 +40,4 @@ Let’s Encrypt sertifikat bera olmasa, vaqtincha o‘z-o‘zidan imzolangan ser
 
 ## Panel porti
 
-Panel 6563-portda ishlaydi. Provayderning tashqi firewall’ida bu port ochiq bo‘lishi kerak. Panel manzillari ishlatilsa, panel 443-port orqali ham ochiladi.
+Panel 6563-portda ishlaydi. Provayderning tashqi firewall’ida bu port ochiq bo‘lishi kerak. Panel manzillari ishlatilsa, panel 443-port orqali ham ochiladi; **IP orqali kirish** o‘chirilganda panel faqat shu yo‘l bilan ochiladi.

@@ -18,6 +18,15 @@ At first the panel opens at `https://SERVER_IP:6563` with a certificate it made 
 
 If Let’s Encrypt cannot issue the certificate, a self-signed one is used for now and the reason is shown.
 
+### Access by IP
+
+Turn off the **Access by IP** switch under the address table and port 6563 is closed to the outside: the panel opens only through its addresses. Access from the server itself (`127.0.0.1`) stays open.
+
+- The switch works once an address with a Let’s Encrypt or your own certificate is added.
+- To turn it off, open the panel through its address (e.g. `https://panel.example.uz`) — on a page opened by IP the switch is inactive.
+- When no such address is left (removed, or its certificate replaced by a self-signed one), access by IP turns back on by itself.
+- If the address stops working, on the server over SSH: `livepanel ip-access on` — [Server commands](console.md).
+
 ## 2. Panel SSL: a certificate for the IP address
 
 ![Panel SSL](../images/panel-ssl.png)
@@ -31,4 +40,4 @@ If Let’s Encrypt cannot issue the certificate, a self-signed one is used for n
 
 ## The panel port
 
-The panel works on port 6563. This port must be open in your provider’s external firewall. With panel addresses, the panel also opens through port 443.
+The panel works on port 6563. This port must be open in your provider’s external firewall. With panel addresses, the panel also opens through port 443; with **Access by IP** off, it opens only this way.

@@ -276,6 +276,14 @@
           }
         },
         {
+          "slug": "console",
+          "title": {
+            "uz": "Server buyruqlari",
+            "ru": "Команды сервера",
+            "en": "Server commands"
+          }
+        },
+        {
           "slug": "api-tokens",
           "title": {
             "uz": "API tokenlar va amallar tarixi",

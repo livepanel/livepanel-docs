@@ -58,7 +58,7 @@ LivePanel is ready
 **Parolni darhol saqlab qo‘ying** — u faqat bir marta ko‘rsatiladi va serverda saqlanmaydi. Parol yo‘qolsa, serverda yangisini o‘rnatasiz:
 
 ```bash
-passwd liveadmin
+livepanel passwd liveadmin
 ```
 
 O‘rnatish logi `/var/log/livepanel-install.log` faylida turadi.
@@ -74,8 +74,10 @@ Login `liveadmin` va saqlangan parol bilan kiring — [Birinchi kirish va interf
 LivePanel va u o‘rnatgan hamma narsani olib tashlash uchun serverda:
 
 ```bash
-livepanel-uninstall
+livepanel remove
 ```
+
+Boshqa server buyruqlari — [Server buyruqlari](console.md).
 
 > Bu buyruq saytlar, bazalar va pochtani ham o‘chiradi. Avval kerakli ma’lumotlarning zaxira nusxasini oling.
 

@@ -6,7 +6,7 @@
 Serverda xizmatlar holatini tekshiring: `systemctl status livepanel livepanel-agent`. 6563-port provayderning tashqi firewall’ida ochiqligini tekshiring. Panel firewall’i SSH va panel portini hech qachon yopmaydi.
 
 **Administrator paroli esdan chiqdi.**
-Tiklash emaili kiritilgan bo‘lsa — kirish sahifasidagi **«Parolni unutdingizmi?»**. Bo‘lmasa, serverda SSH orqali: `passwd liveadmin`.
+Tiklash emaili kiritilgan bo‘lsa — kirish sahifasidagi **«Parolni unutdingizmi?»**. Bo‘lmasa, serverda SSH orqali: `livepanel passwd liveadmin`.
 
 **IP manzilim bloklandi.**
 Bir necha daqiqadan keyin blok o‘zi ochiladi. Shoshilinch bo‘lsa, boshqa IP’dan (masalan telefon interneti orqali) kirib **Sozlamalar → Login himoyasi** da blokdan chiqaring va IP’ingizni oq ro‘yxatga qo‘shing.
@@ -55,7 +55,7 @@ Saytlar RAM limitidan oshgan. Limitni oshiring yoki saytni optimallashtiring, ke
 
 ## Panelni o‘chirish
 
-Serverda: `livepanel-uninstall`. Bu saytlar, bazalar va pochtani ham o‘chiradi — avval zaxira oling.
+Serverda: `livepanel remove`. Bu saytlar, bazalar va pochtani ham o‘chiradi — avval zaxira oling.
 
 ## Yordam
 

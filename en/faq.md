@@ -6,7 +6,7 @@
 Check the services on the server: `systemctl status livepanel livepanel-agent`. Check that port 6563 is open in the provider’s external firewall. The panel’s own firewall never closes SSH and the panel port.
 
 **I forgot the administrator password.**
-With a recovery email set — **Forgot your password?** on the sign-in page. Otherwise, over SSH on the server: `passwd liveadmin`.
+With a recovery email set — **Forgot your password?** on the sign-in page. Otherwise, over SSH on the server: `livepanel passwd liveadmin`.
 
 **My IP address is blocked.**
 The block lifts by itself after a few minutes. If it is urgent, sign in from another IP (e.g. mobile internet), unblock yourself in **Settings → Login protection** and add your IP to the allowlist.
@@ -55,7 +55,7 @@ The sites went over the RAM limit. Raise the limit or optimize the site, then ed
 
 ## Removing the panel
 
-On the server: `livepanel-uninstall`. This also deletes the sites, databases and mail — make backups first.
+On the server: `livepanel remove`. This also deletes the sites, databases and mail — make backups first.
 
 ## Help
 

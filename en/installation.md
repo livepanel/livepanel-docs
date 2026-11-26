@@ -58,7 +58,7 @@ LivePanel is ready
 **Save the password right away** — it is shown only once and is not kept on the server. If it is lost, set a new one on the server:
 
 ```bash
-passwd liveadmin
+livepanel passwd liveadmin
 ```
 
 The installation log is in `/var/log/livepanel-install.log`.
@@ -74,8 +74,10 @@ Sign in as `liveadmin` with the saved password — [First sign-in and the interf
 To remove LivePanel and everything it installed, run on the server:
 
 ```bash
-livepanel-uninstall
+livepanel remove
 ```
+
+Other server commands — [Server commands](console.md).
 
 > This also deletes the sites, databases and mail. Make backups of anything you need first.
 
