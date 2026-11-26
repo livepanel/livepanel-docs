@@ -5219,7 +5219,7 @@
           "Backups"
         ],
         "operationId": "post_remote",
-        "summary": "Disconnect a backup storage (connecting needs a browser)",
+        "summary": "connect: get a sign-in link (open redirect in a browser); origin must be the panel address the request went to, otherwise 400 invalid_origin; without origin the code flow starts (pending.user_code). cancel, disconnect",
         "description": "Scope: `backups:write`.",
         "security": [
           {
@@ -5246,12 +5246,14 @@
                   "action": {
                     "type": "string",
                     "enum": [
-                      "disconnect",
-                      "cancel"
+                      "connect",
+                      "cancel",
+                      "disconnect"
                     ]
                   },
                   "origin": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "https://<panel address>, the same the request goes to"
                   }
                 },
                 "additionalProperties": false,
@@ -8018,7 +8020,7 @@
           "Server"
         ],
         "operationId": "post_panel_tls",
-        "summary": "Get/renew the IP certificate or go back to the self-signed one",
+        "summary": "issue: get/renew the IP certificate (400 service_not_paid without the paid Panel SSL service); self: back to the own certificate (fine when it already is)",
         "description": "Scope: `system:write`.",
         "security": [
           {

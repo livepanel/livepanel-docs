@@ -386,7 +386,7 @@ curl -sS --fail-with-body -X POST \
 | GET | `/backups/remote?domain=` | read | Состояние Google Drive/Dropbox для сайта и копии в хранилище |
 | POST | `/backups/remote` | write | `enable`, `disable`, `keep`, `sync`, `fetch`, `delete` |
 | GET | `/remote` | read | Подключённые хранилища и место в них |
-| POST | `/remote` | write | `disconnect` (подключение — через браузер) |
+| POST | `/remote` | write | `connect` — получить ссылку для входа: `{"provider","action":"connect","origin":"https://<адрес панели>"}`, откройте `redirect` из ответа в браузере (`origin` — тот самый адрес панели, на который ушёл запрос, другой даёт `400 invalid_origin`; без `origin` — вход по коду, `pending.user_code`); `cancel`, `disconnect` |
 
 Примеры `POST /backups`:
 
@@ -454,7 +454,7 @@ lp POST /git '{"domain":"api.example.uz","action":"deploy"}'
 | GET | `/security` | Защита входа, заблокированные IP, fail2ban |
 | POST | `/security/settings`, `/security/unblock` | Настройки; `{"ip","jail"}` — разблокировать |
 | GET / POST | `/quota` | Дисковые квоты; `{"action":"enable"}` |
-| GET / POST | `/panel-tls` | Сертификат панели на IP: `issue` (получить или обновить), `self` (вернуться к своему) |
+| GET / POST | `/panel-tls` | Сертификат панели на IP: `issue` (получить или обновить; без оплаченной услуги «SSL панели» — `400 service_not_paid`), `self` (вернуться к своему; без ошибки, если уже на своём) |
 | GET / POST | `/panel-addresses` | Домены панели: `add` (`domain`, `cert`, `email`, `cert_pem`, `key_pem`), `cert`, `remove` |
 
 > Применяя файрвол через API, в течение минуты отправьте `confirm` с `token` из ответа `apply` — иначе панель вернёт прежние правила (чтобы вы не заблокировали себя).

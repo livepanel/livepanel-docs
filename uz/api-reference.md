@@ -386,7 +386,7 @@ Maydonlar: `action`, `id`, `site`, `schedule` (`*/5 * * * *`), `command`, `comme
 | GET | `/backups/remote?domain=` | read | Saytning Google Drive/Dropbox holati va ombordagi nusxalar |
 | POST | `/backups/remote` | write | `enable`, `disable`, `keep`, `sync`, `fetch`, `delete` |
 | GET | `/remote` | read | Ulangan omborlar va ulardagi joy |
-| POST | `/remote` | write | `disconnect` (ulash brauzer orqali bo‘ladi) |
+| POST | `/remote` | write | `connect` — kirish havolasini oladi: `{"provider","action":"connect","origin":"https://<panel manzili>"}`, javobdagi `redirect` ni brauzerda oching (`origin` — so‘rov yuborilgan panel manzilining o‘zi, boshqasi `400 invalid_origin`; `origin` siz — kod bilan ulanish, `pending.user_code`); `cancel`, `disconnect` |
 
 `POST /backups` misollari:
 
@@ -454,7 +454,7 @@ Akkaunt maydonlari: `name` (3–64 belgi, keyin o‘zgarmaydi), `role` (`user`, 
 | GET | `/security` | Login himoyasi, bloklangan IP’lar, fail2ban |
 | POST | `/security/settings`, `/security/unblock` | Sozlamalar; `{"ip","jail"}` — blokdan chiqarish |
 | GET / POST | `/quota` | Disk kvotalari; `{"action":"enable"}` |
-| GET / POST | `/panel-tls` | Panel IP sertifikati: `issue` (olish yoki yangilash), `self` (o‘z sertifikatiga qaytish) |
+| GET / POST | `/panel-tls` | Panel IP sertifikati: `issue` (olish yoki yangilash; Panel SSL xizmati to‘lanmagan bo‘lsa — `400 service_not_paid`), `self` (o‘z sertifikatiga qaytish; allaqachon o‘zida bo‘lsa ham xatosiz) |
 | GET / POST | `/panel-addresses` | Panel domenlari: `add` (`domain`, `cert`, `email`, `cert_pem`, `key_pem`), `cert`, `remove` |
 
 > Firewall’ni API orqali qo‘llaganda `apply` javobidagi `token` bilan bir daqiqa ichida `confirm` yuboring — aks holda panel avvalgi qoidalarni tiklaydi (o‘zingizni bloklab qo‘ymaslik uchun).

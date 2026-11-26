@@ -386,7 +386,7 @@ Fields: `action`, `id`, `site`, `schedule` (`*/5 * * * *`), `command`, `comment`
 | GET | `/backups/remote?domain=` | read | The site’s Google Drive/Dropbox state and the copies in storage |
 | POST | `/backups/remote` | write | `enable`, `disable`, `keep`, `sync`, `fetch`, `delete` |
 | GET | `/remote` | read | Connected storages and their space |
-| POST | `/remote` | write | `disconnect` (connecting goes through the browser) |
+| POST | `/remote` | write | `connect` — gets a sign-in link: `{"provider","action":"connect","origin":"https://<panel address>"}`, open `redirect` from the response in a browser (`origin` must be the very panel address the request went to, another one gives `400 invalid_origin`; without `origin` — the code flow, `pending.user_code`); `cancel`, `disconnect` |
 
 `POST /backups` examples:
 
@@ -454,7 +454,7 @@ Account fields: `name` (3–64 characters, cannot change later), `role` (`user`,
 | GET | `/security` | Sign-in protection, blocked IPs, fail2ban |
 | POST | `/security/settings`, `/security/unblock` | Settings; `{"ip","jail"}` — unblock |
 | GET / POST | `/quota` | Disk quotas; `{"action":"enable"}` |
-| GET / POST | `/panel-tls` | The panel’s IP certificate: `issue` (get or renew), `self` (back to its own certificate) |
+| GET / POST | `/panel-tls` | The panel’s IP certificate: `issue` (get or renew; without the paid Panel SSL service — `400 service_not_paid`), `self` (back to its own certificate; fine when it already is) |
 | GET / POST | `/panel-addresses` | Panel domains: `add` (`domain`, `cert`, `email`, `cert_pem`, `key_pem`), `cert`, `remove` |
 
 > When applying the firewall through the API, send `confirm` with the `token` from the `apply` response within a minute — otherwise the panel restores the previous rules (so you cannot lock yourself out).
