@@ -94,7 +94,8 @@ routes = [
           'auth_password': S(), 'runtime': S(description='Empty keeps the type'), 'handler': S(), 'php': S(), 'node': S(), 'python': S(), 'proxy': S(), 'force_https': B()},
          ['domain', 'settings'])),
     ('Sites', 'POST', '/sites/ssl', 'sites:write', 'Issue or remove an SSL certificate, set the HTTPS redirect', [],
-     obj({'domain': S(), 'action': S(enum=['issue', 'remove']), 'type': S(enum=['letsencrypt', 'selfsigned', '']), 'email': S(), 'force_https': B()}, ['domain', 'action'])),
+     obj({'domain': S(), 'action': S(enum=['issue', 'remove', 'https']), 'type': S(enum=['letsencrypt', 'selfsigned', '']), 'email': S(), 'force_https': B(),
+          'wildcard': B(description='letsencrypt only, Premium: also *.<domain>, checked through DNS (the zone must be in this panel and its NS must point here)')}, ['domain', 'action'])),
     ('Sites', 'GET', '/sites/scan', 'sites:read', 'Last antivirus scan of a site', [DOMAIN], None),
     ('Sites', 'POST', '/sites/scan', 'sites:write', 'Start an antivirus scan (ClamAV)', [], obj({'domain': S()}, ['domain'])),
     ('Sites', 'POST', '/sites/scan/action', 'sites:write', 'Quarantine, delete, restore or purge a found file', [],
@@ -136,8 +137,8 @@ routes = [
 
     ('DNS', 'GET', '/dns', 'dns:read', 'DNS zones, server IP and BIND state', [], None),
     ('DNS', 'GET', '/dns/zone', 'dns:read', 'Records of a zone', [q('zone', 'Zone name', True)], None),
-    ('DNS', 'POST', '/dns', 'dns:write', 'Create or delete a zone, save all its records. save replaces the whole list: start from zone.records of GET /dns/zone (NS records are required)', [],
-     obj({'action': S(enum=['create', 'save', 'delete']), 'zone': S(), 'records': ARR(obj({'name': S(), 'type': S(enum=['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV', 'CAA']), 'ttl': I(), 'value': S(), 'priority': I()})), 'ttl': I()}, ['action', 'zone'])),
+    ('DNS', 'POST', '/dns', 'dns:write', 'Create or delete a zone, save all its records, turn DNSSEC on or off. save replaces the whole list: start from zone.records of GET /dns/zone (NS records are required). The response carries dnssec {enabled, pending, ds[]}: put ds[].record at the registrar', [],
+     obj({'action': S(enum=['create', 'save', 'delete', 'dnssec']), 'zone': S(), 'dnssec': B(description='action dnssec: on or off'), 'records': ARR(obj({'name': S(), 'type': S(enum=['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV', 'CAA']), 'ttl': I(), 'value': S(), 'priority': I()})), 'ttl': I()}, ['action', 'zone'])),
 
     ('Mail', 'GET', '/mail', 'mail:read', 'Mail domains, mailboxes, connection details and DNS records', [], None),
     ('Mail', 'POST', '/mail', 'mail:write', 'Manage mail domains and mailboxes', [],

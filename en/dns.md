@@ -46,3 +46,14 @@ The DNS server (BIND) must be installed — **System → Applications** → `bin
 | CAA | Which authorities may issue SSL, e.g. `0 issue "letsencrypt.org"` |
 
 The zone **serial number** grows on every save. **Delete zone** removes the zone completely — if the domain uses this server through NS, it stops opening.
+
+## DNSSEC
+
+DNSSEC signs the zone’s answers: resolvers check that an answer really came from this server, so nobody can forge a DNS answer.
+
+1. On the zone page, in the **DNSSEC** card, click **Turn on DNSSEC**. BIND makes the key (ECDSA P-256) and signs the zone. Every change is signed automatically too.
+2. After a few seconds the card shows the **DS record**: Key tag, Algorithm (13), Digest type (2, SHA-256) and Digest.
+3. Add this DS record in the domain registrar’s panel (DNSSEC section). Some registrars ask for the DNSKEY instead — it is in the card too.
+4. A few hours later, check with [dnsviz.net](https://dnsviz.net).
+
+**Before turning it off**, remove the DS record at the registrar and wait a few hours. Otherwise resolvers refuse the unsigned answers and the domain stops resolving.

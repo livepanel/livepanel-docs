@@ -265,7 +265,7 @@ Inside `settings`: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`
 { "domain": "shop.example.uz", "action": "issue", "type": "letsencrypt", "email": "admin@example.uz", "force_https": true }
 ```
 
-`type`: `letsencrypt` or `selfsigned`.
+`type`: `letsencrypt` or `selfsigned`. `"wildcard": true` (`letsencrypt` only, needs the **Premium** plan) adds `*.<domain>` to the certificate. It is checked through DNS, so the domain’s zone must be in this panel and its NS records must point to this server. Errors: `402 upgrade_required` (not Premium), `wildcard_zone_missing`, `wildcard_dns_elsewhere` (`detail` is the zone), `bind_unavailable`. The site object then has `wildcard: true`.
 
 **Installing an application** — `POST /apps/install`:
 
@@ -338,9 +338,11 @@ Sending the empty fields too is accepted: `{"action":"delete","name":"shop_db","
 |---|---|---|---|
 | GET | `/dns` | read | Zones, the server IP, BIND state |
 | GET | `/dns/zone?zone=` | read | Records of a zone |
-| POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`) |
+| POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`), `dnssec` (`zone`, `dnssec`: true/false) |
 
 `records` is the full list (`zone.records` from the `GET /dns/zone` response, NS records included): `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` replaces all records of the zone — read them first with `GET /dns/zone`.
+
+**DNSSEC**: `{"action":"dnssec","zone":"example.uz","dnssec":true}`. The `dnssec` object in the `GET /dns/zone` and `POST /dns` responses: `{"enabled":true,"pending":false,"ds":[{"key_tag":12345,"algorithm":13,"digest_type":2,"digest":"…","record":"example.uz. IN DS 12345 13 2 …","dnskey":"257 3 13 …"}]}`. `pending: true` means BIND is still making the key; ask again in a few seconds. Put `ds[].record` at the registrar. Remove the DS at the registrar before turning DNSSEC off.
 
 ### Mail — `mail`
 

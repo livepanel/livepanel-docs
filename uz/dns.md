@@ -46,3 +46,14 @@ Serverda DNS serveri (BIND) o‘rnatilgan bo‘lishi kerak — **Tizim → Ilova
 | CAA | Qaysi markaz SSL bera olishi, masalan `0 issue "letsencrypt.org"` |
 
 Har saqlashda zona **seriya raqami** o‘zi oshadi. **«Zonani o‘chirish»** zonani butunlay olib tashlaydi — domen NS orqali shu serverga ulangan bo‘lsa, u ochilmay qoladi.
+
+## DNSSEC
+
+DNSSEC zonaning javoblarini raqamli imzolaydi: resolverlar javob haqiqatan shu serverdan kelganini tekshiradi va hech kim DNS javobini soxtalashtira olmaydi.
+
+1. Zona sahifasida **DNSSEC** kartasida **DNSSEC’ni yoqish** tugmasini bosing. BIND kalitni o‘zi yaratadi (ECDSA P-256) va zonani imzolaydi. Har bir o‘zgarish ham avtomatik imzolanadi.
+2. Bir necha soniyadan keyin kartada **DS yozuvi** chiqadi: Key tag, Algoritm (13), Digest turi (2, SHA-256) va Digest.
+3. Shu DS yozuvini domen registratorining panelida (DNSSEC bo‘limi) qo‘shing. Ba’zi registratorlar DNSKEY so‘raydi — u ham kartada bor.
+4. Bir necha soatdan keyin [dnsviz.net](https://dnsviz.net) bilan tekshiring.
+
+**O‘chirishdan oldin** registratordagi DS yozuvini o‘chiring va bir necha soat kuting. Aks holda resolverlar imzosiz javobni rad etadi va domen ochilmay qoladi.

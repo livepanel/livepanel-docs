@@ -26,6 +26,24 @@ The table shows the site, type, validity and the HTTPS redirect. The row menu ha
 - turning the **HTTPS redirect** on or off;
 - **Remove certificate** — the site works over HTTP only.
 
+## Wildcard certificate (Premium)
+
+A wildcard certificate is one certificate for the domain itself and **all its subdomains**: `example.uz` and `*.example.uz`. It is available only on panels with a **Premium** license.
+
+Requirements:
+
+- the domain’s DNS zone must be in this panel — [Domains and DNS](dns.md);
+- at the registrar, the domain’s NS servers must point to this server (`dig NS example.uz`).
+
+How to get it: **New certificate** → **Let’s Encrypt** → tick **Wildcard: also \*.domain**. Let’s Encrypt checks the domain through DNS. The panel adds the `_acme-challenge` TXT record to the zone and removes it after the check. The certificate renews by itself the same way.
+
+A site with a wildcard certificate also answers every subdomain that has no site of its own (`*.domain` is added to `server_name`). Subdomains with their own site keep opening that site.
+
+Errors:
+
+- **no zone** — create the zone in **Domains and DNS** first;
+- **NS does not point here** — change the NS at the registrar and wait for it to spread.
+
 ## Automatic renewal
 
 Let’s Encrypt certificates renew by themselves before they expire. If a certificate has less than 14 days left and did not renew, the panel emails the site owner and the administrator.

@@ -265,7 +265,7 @@ console.log(sites.map((s) => s.domain));
 { "domain": "shop.example.uz", "action": "issue", "type": "letsencrypt", "email": "admin@example.uz", "force_https": true }
 ```
 
-`type`: `letsencrypt` или `selfsigned`.
+`type`: `letsencrypt` или `selfsigned`. `"wildcard": true` (только `letsencrypt`, нужен тариф **Premium**) добавляет в сертификат `*.<domain>`. Проверка идёт через DNS, поэтому зона домена должна быть в этой панели, а NS-записи — указывать на этот сервер. Ошибки: `402 upgrade_required` (не Premium), `wildcard_zone_missing`, `wildcard_dns_elsewhere` (`detail` — зона), `bind_unavailable`. В объекте сайта будет `wildcard: true`.
 
 **Установка приложения** — `POST /apps/install`:
 
@@ -338,9 +338,11 @@ curl -sS --fail-with-body -X POST \
 |---|---|---|---|
 | GET | `/dns` | read | Зоны, IP сервера, состояние BIND |
 | GET | `/dns/zone?zone=` | read | Записи зоны |
-| POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`) |
+| POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`), `dnssec` (`zone`, `dnssec`: true/false) |
 
 `records` — полный список (`zone.records` из ответа `GET /dns/zone`, вместе с NS-записями): `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` заменяет все записи зоны — сначала получите их через `GET /dns/zone`.
+
+**DNSSEC**: `{"action":"dnssec","zone":"example.uz","dnssec":true}`. Объект `dnssec` в ответах `GET /dns/zone` и `POST /dns`: `{"enabled":true,"pending":false,"ds":[{"key_tag":12345,"algorithm":13,"digest_type":2,"digest":"…","record":"example.uz. IN DS 12345 13 2 …","dnskey":"257 3 13 …"}]}`. `pending: true` — BIND ещё создаёт ключ, повторите запрос через несколько секунд. `ds[].record` добавляется у регистратора. Перед выключением удалите DS у регистратора.
 
 ### Почта — `mail`
 

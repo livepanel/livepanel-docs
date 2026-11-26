@@ -26,6 +26,24 @@ Jadvalda sayt, turi, amal qilish muddati va HTTPS’ga yo‘naltirish holati ko�
 - **HTTPS’ga yo‘naltirishni yoqish/o‘chirish**;
 - **Sertifikatni o‘chirish** — sayt faqat HTTP orqali ishlaydi.
 
+## Wildcard sertifikat (Premium)
+
+Wildcard sertifikat domenning o‘zi va **barcha subdomenlari** uchun bitta sertifikat: `example.uz` va `*.example.uz`. Bu imkoniyat faqat **Premium** litsenziyali panellarda ishlaydi.
+
+Shartlar:
+
+- domenning DNS zonasi shu panelda bo‘lishi kerak — [Domenlar va DNS](dns.md);
+- registratorda domenning NS serverlari shu serverga yo‘naltirilgan bo‘lishi kerak (`dig NS example.uz`).
+
+Olish tartibi: **Yangi sertifikat** → **Let’s Encrypt** → **Wildcard: \*.domen ham** belgisini qo‘ying. Let’s Encrypt domenni DNS orqali tekshiradi. Panel `_acme-challenge` TXT yozuvini zonaga o‘zi qo‘shadi va tekshiruvdan keyin o‘chiradi. Sertifikat avtomatik yangilanadi, yangilanishda ham shu yo‘l ishlatiladi.
+
+Wildcard sertifikatli sayt o‘z sayti bo‘lmagan barcha subdomenlarga ham javob beradi (`server_name` ga `*.domen` qo‘shiladi). O‘z sayti bor subdomenlar avvalgidek o‘z saytini ochadi.
+
+Xatolar:
+
+- **zona yo‘q** — avval **Domenlar va DNS** bo‘limida zonani yarating;
+- **NS shu serverga yo‘naltirilmagan** — registratorda NS’ni almashtiring va tarqalishini kuting.
+
 ## Avtomatik yangilanish
 
 Let’s Encrypt sertifikatlari muddati tugashidan oldin o‘zi yangilanadi. Muddati 14 kundan kam qolgan va yangilanmagan sertifikat haqida panel sayt egasi va administratorga email yuboradi.

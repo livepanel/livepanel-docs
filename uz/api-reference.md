@@ -265,7 +265,7 @@ Javobdagi `state`: `provisioning`, `active`, `disabled`, `failed` (sababi `error
 { "domain": "shop.example.uz", "action": "issue", "type": "letsencrypt", "email": "admin@example.uz", "force_https": true }
 ```
 
-`type`: `letsencrypt` yoki `selfsigned`.
+`type`: `letsencrypt` yoki `selfsigned`. `"wildcard": true` (faqat `letsencrypt`, **Premium** tarifi kerak) sertifikatga `*.<domain>` ni ham qo‘shadi. Bu DNS orqali tekshiriladi, shuning uchun domen zonasi shu panelda bo‘lishi va NS yozuvlari shu serverga yo‘naltirilgan bo‘lishi kerak. Xatolar: `402 upgrade_required` (Premium emas), `wildcard_zone_missing`, `wildcard_dns_elsewhere` (`detail` — zona), `bind_unavailable`. Sayt obyektida `wildcard: true` bo‘ladi.
 
 **Ilova o‘rnatish** — `POST /apps/install`:
 
@@ -338,9 +338,11 @@ Bo‘sh maydonlarni ham yuboring: `{"action":"delete","name":"shop_db","user":""
 |---|---|---|---|
 | GET | `/dns` | read | Zonalar, server IP, BIND holati |
 | GET | `/dns/zone?zone=` | read | Zona yozuvlari |
-| POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`) |
+| POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`), `dnssec` (`zone`, `dnssec`: true/false) |
 
 `records` — to‘liq ro‘yxat (`GET /dns/zone` javobidagi `zone.records`, NS yozuvlari bilan birga): `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` zonaning barcha yozuvlarini almashtiradi — avval `GET /dns/zone` bilan oling.
+
+**DNSSEC**: `{"action":"dnssec","zone":"example.uz","dnssec":true}`. `GET /dns/zone` va `POST /dns` javobidagi `dnssec` obyekti: `{"enabled":true,"pending":false,"ds":[{"key_tag":12345,"algorithm":13,"digest_type":2,"digest":"…","record":"example.uz. IN DS 12345 13 2 …","dnskey":"257 3 13 …"}]}`. `pending: true` — BIND kalitni hali yaratmoqda, bir necha soniyadan keyin qayta so‘rang. `ds[].record` ni registratorga qo‘yasiz. O‘chirishdan oldin registratordagi DS’ni olib tashlang.
 
 ### Pochta — `mail`
 

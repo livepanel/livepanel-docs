@@ -792,7 +792,8 @@
                     "type": "string",
                     "enum": [
                       "issue",
-                      "remove"
+                      "remove",
+                      "https"
                     ]
                   },
                   "type": {
@@ -808,6 +809,10 @@
                   },
                   "force_https": {
                     "type": "boolean"
+                  },
+                  "wildcard": {
+                    "type": "boolean",
+                    "description": "letsencrypt only, Premium: also *.<domain>, checked through DNS (the zone must be in this panel and its NS must point here)"
                   }
                 },
                 "additionalProperties": false,
@@ -3714,7 +3719,7 @@
           "DNS"
         ],
         "operationId": "post_dns",
-        "summary": "Create or delete a zone, save all its records. save replaces the whole list: start from zone.records of GET /dns/zone (NS records are required)",
+        "summary": "Create or delete a zone, save all its records, turn DNSSEC on or off. save replaces the whole list: start from zone.records of GET /dns/zone (NS records are required). The response carries dnssec {enabled, pending, ds[]}: put ds[].record at the registrar",
         "description": "Scope: `dns:write`.",
         "security": [
           {
@@ -3736,11 +3741,16 @@
                     "enum": [
                       "create",
                       "save",
-                      "delete"
+                      "delete",
+                      "dnssec"
                     ]
                   },
                   "zone": {
                     "type": "string"
+                  },
+                  "dnssec": {
+                    "type": "boolean",
+                    "description": "action dnssec: on or off"
                   },
                   "records": {
                     "type": "array",
