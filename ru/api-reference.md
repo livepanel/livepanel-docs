@@ -224,6 +224,7 @@ console.log(sites.map((s) => s.domain));
 | POST | `/site-service` | write | `{"domain","action":"restart"}` |
 | GET | `/traffic?domain=&month=YYYY-MM` | read | Трафик за месяц и график по дням (без `domain` — по аккаунтам) |
 | GET | `/sites/stats-report?domain=` | read | Отчёт о посещениях GoAccess (HTML) |
+| GET | `/sites/waf?domain=` | read | Веб-файрвол: режим, работает ли и последние остановленные запросы |
 | GET | `/apps/install?domain=` | read | Состояние установки приложения |
 | POST | `/apps/install` | write | Установить CMS/фреймворк |
 | GET | `/get-site-photo/{domain}` | read | Снимок сайта (изображение) |
@@ -257,7 +258,7 @@ console.log(sites.map((s) => s.domain));
 }
 ```
 
-Внутри `settings`: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`, `cache_days`, `hsts`, `http2`, `redirects`, `access_log`, `error_log`, `auth_on`, `auth_user`, `rate_on`, `rate`, `rate_unit`, `burst_on`, `burst`, `no_delay`, `env`, `access_mode`, `access_list`, `php_ini`. Пустой `runtime` оставляет тип бэкенда; другое значение меняет его ([Настройки сайта](site-settings.md)).
+Внутри `settings`: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`, `cache_days`, `hsts`, `http2`, `redirects`, `access_log`, `error_log`, `auth_on`, `auth_user`, `rate_on`, `rate`, `rate_unit`, `burst_on`, `burst`, `no_delay`, `env`, `access_mode`, `access_list`, `php_ini`, `waf` (`""` | `on` | `detect`), `waf_app` (`""` | `wordpress` | `drupal` | `nextcloud` | `dokuwiki` | `xenforo`), `waf_skip` (rule IDs). Пустой `runtime` оставляет тип бэкенда; другое значение меняет его ([Настройки сайта](site-settings.md)).
 
 **SSL** — `POST /sites/ssl`:
 

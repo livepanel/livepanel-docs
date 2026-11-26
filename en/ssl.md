@@ -32,10 +32,16 @@ The table shows the site, type, validity and the HTTPS redirect. The row menu ha
 
 A wildcard certificate is one certificate for the domain itself and **all its subdomains**: `example.uz` and `*.example.uz`. It is available only on panels with a **Premium** license.
 
-Requirements:
+Let’s Encrypt checks a wildcard name through DNS only: it needs the TXT record `_acme-challenge.<domain>`. For the panel to place it, one of two ways is enough:
 
-- the domain’s DNS zone must be in this panel — [Domains and DNS](dns.md);
-- at the registrar, the domain’s NS servers must point to this server (`dig NS example.uz`).
+1. **The domain’s DNS is on this server** — the domain’s zone is in the panel ([Domains and DNS](dns.md)) and its NS servers at the registrar point to this server (`dig NS example.uz`).
+2. **The DNS stays elsewhere** (registrar or DNS provider) — you add **one NS record** there, which hands only the check name to this server:
+
+   ```
+   _acme-challenge.example.uz.  NS  example.uz.
+   ```
+
+   The panel shows the exact record — in the error box the first time you ask for the wildcard. The NS value is a name that points to this server (usually the domain itself). No other DNS record changes. Wait 5–10 minutes after adding it and ask for the certificate again.
 
 How to get it: **New certificate** → **Let’s Encrypt** → tick **Wildcard: also \*.domain**. Let’s Encrypt checks the domain through DNS. The panel adds the `_acme-challenge` TXT record to the zone and removes it after the check. The certificate renews by itself the same way.
 
@@ -43,8 +49,8 @@ A site with a wildcard certificate also answers every subdomain that has no site
 
 Errors:
 
-- **no zone** — create the zone in **Domains and DNS** first;
-- **NS does not point here** — change the NS at the registrar and wait for it to spread.
+- **DNS not on this server** — add the NS record the panel shows (way 2), or move the domain’s NS to this server (way 1);
+- **no zone** — the domain’s NS is already here but the panel has no zone for it: create it in **Domains and DNS**.
 
 ## Automatic renewal
 

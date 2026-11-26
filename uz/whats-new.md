@@ -2,6 +2,12 @@
 
 LivePanel o‘zini avtomatik yangilaydi (har 6 soatda tekshiradi, administrator kirganda ham). Versiya raqami — sana va vaqt (UTC): `YYYY.MM.DD.HHMM`. Joriy versiya panel menyusining pastida ko‘rinadi. Bu sahifada oxirgi o‘zgarishlar — yangisi tepada.
 
+## 2026.11.26.1641 — Veb-firewall (WAF) va wildcard SSL boshqa DNS bilan
+
+- **Veb-firewall (WAF)** — har bir sayt uchun ModSecurity + OWASP CRS: bloklash yoki faqat kuzatish rejimi, WordPress/Drupal/Nextcloud istisnolari, to‘xtatilgan so‘rovlar ro‘yxati va noto‘g‘ri ishlagan qoidani bir bosishda o‘chirish — [Sayt xavfsizligi](site-security.md#veb-firewall-waf).
+- **Wildcard SSL DNS boshqa joyda bo‘lsa ham** ishlaydi: registratorda bitta `_acme-challenge` NS yozuvi yetadi, panel aniq yozuvni ko‘rsatadi — [SSL sertifikatlar](ssl.md#wildcard-sertifikat-premium).
+- API v2: `GET /sites/waf`, sayt sozlamalarida `waf`, `waf_app`, `waf_skip`.
+
 ## 2026.11.26.1605 — Sayt statistikasi
 
 - **Tashriflar hisoboti** (GoAccess) yana ochiladi: oldin sahifa doim «yuklanmoqda» holatida qolardi. Hisobot avvalgidek paneldan ajratilgan (sandbox) holda ochiladi — [Statistika](statistics.md).

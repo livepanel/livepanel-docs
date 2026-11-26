@@ -34,6 +34,24 @@ ClamAV serverda o‘rnatilgan bo‘lishi kerak: administrator uni **Tizim → Il
 
 Sayt buzilgan bo‘lsa: zararli fayllarni olib tashlang, CMS va plaginlarni yangilang, barcha parollarni (panel, FTP, baza, CMS administratori) almashtiring.
 
+## Veb-firewall (WAF)
+
+![Veb-firewall](../images/waf.png)
+
+**Sayt sozlamalari → Veb-firewall (WAF)** — har bir sayt uchun ModSecurity va OWASP Core Rule Set (CRS 3.3). U saytga keladigan so‘rovlarni tekshiradi va SQL injection, XSS, fayl yo‘lini buzish (`../`), buyruq kiritish hamda zararli skanerlarni to‘xtatadi.
+
+**Rejimlar:**
+
+- **O‘chiq** — so‘rovlar tekshirilmaydi;
+- **Faqat kuzatish** — hech narsa to‘xtatilmaydi, shubhali so‘rovlar faqat yoziladi. Yangi saytda avval shu rejimni bir-ikki kun sinab ko‘ring;
+- **Bloklash** — hujum belgisi bor so‘rov `403` bilan to‘xtatiladi.
+
+**Sayt ilovasi** — WordPress, Drupal, Nextcloud, DokuWiki yoki XenForo tanlansa, CRS’ning shu ilova uchun tayyor istisnolari yoqiladi va admin panel, muharrir kabi qismlar noto‘g‘ri bloklanmaydi.
+
+**Oxirgi to‘xtatilgan so‘rovlar** jadvalida vaqt, IP, so‘rov va ishlagan qoidalar (ID va tavsif) ko‘rinadi. Agar qoida oddiy foydalanuvchini to‘xtatayotgan bo‘lsa (false positive), uning yonidagi **«Bu qoidani o‘chirish»** tugmasini bosing — ID **O‘chirilgan qoidalar** ro‘yxatiga tushadi. Keyin **Saqlash**ni bosing. Qoidani faqat shu saytda o‘chiradi.
+
+Birinchi marta yoqilganda panel ModSecurity paketlarini o‘zi o‘rnatadi (bir daqiqagacha). Har bir WAF yoqilgan sayt Nginx’ga taxminan 10–15 MB xotira qo‘shadi. API orqali: sayt sozlamalarida `waf`, `waf_app`, `waf_skip`, hodisalar — `GET /sites/waf` ([API v2](api-reference.md)).
+
 ## Boshqa himoya choralari
 
 - Saytga so‘rovlar chegarasi — [Sayt sozlamalari](site-settings.md) → Xavfsizlik.

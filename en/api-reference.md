@@ -224,6 +224,7 @@ All routes below are relative to `https://…/api/v2`. `domain` is the site doma
 | POST | `/site-service` | write | `{"domain","action":"restart"}` |
 | GET | `/traffic?domain=&month=YYYY-MM` | read | Monthly traffic and a daily chart (without `domain` — per account) |
 | GET | `/sites/stats-report?domain=` | read | GoAccess visitor report (HTML) |
+| GET | `/sites/waf?domain=` | read | Web firewall: mode, whether it works and the latest stopped requests |
 | GET | `/apps/install?domain=` | read | Application install state |
 | POST | `/apps/install` | write | Install a CMS/framework |
 | GET | `/get-site-photo/{domain}` | read | Site preview (image) |
@@ -257,7 +258,7 @@ All routes below are relative to `https://…/api/v2`. `domain` is the site doma
 }
 ```
 
-Inside `settings`: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`, `cache_days`, `hsts`, `http2`, `redirects`, `access_log`, `error_log`, `auth_on`, `auth_user`, `rate_on`, `rate`, `rate_unit`, `burst_on`, `burst`, `no_delay`, `env`, `access_mode`, `access_list`, `php_ini`. An empty `runtime` keeps the backend type; another value switches it ([Site settings](site-settings.md)).
+Inside `settings`: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`, `cache_days`, `hsts`, `http2`, `redirects`, `access_log`, `error_log`, `auth_on`, `auth_user`, `rate_on`, `rate`, `rate_unit`, `burst_on`, `burst`, `no_delay`, `env`, `access_mode`, `access_list`, `php_ini`, `waf` (`""` | `on` | `detect`), `waf_app` (`""` | `wordpress` | `drupal` | `nextcloud` | `dokuwiki` | `xenforo`), `waf_skip` (rule IDs). An empty `runtime` keeps the backend type; another value switches it ([Site settings](site-settings.md)).
 
 **SSL** — `POST /sites/ssl`:
 

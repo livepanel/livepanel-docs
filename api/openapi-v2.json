@@ -661,7 +661,7 @@
                   },
                   "settings": {
                     "type": "object",
-                    "description": "aliases, gzip, gzip_level, nginx_static, static_ext, cache_days, hsts, http2, redirects, access_log, error_log, auth_on, auth_user, rate_on, rate, rate_unit, burst_on, burst, no_delay, env, access_mode, access_list, php_ini"
+                    "description": "aliases, gzip, gzip_level, nginx_static, static_ext, cache_days, hsts, http2, redirects, access_log, error_log, auth_on, auth_user, rate_on, rate, rate_unit, burst_on, burst, no_delay, env, access_mode, access_list, php_ini, waf (\"\" | on | detect), waf_app (\"\" | wordpress | drupal | nextcloud | dokuwiki | xenforo), waf_skip (rule IDs)"
                   },
                   "auth_password": {
                     "type": "string"
@@ -1222,6 +1222,97 @@
             "in": "query",
             "required": false,
             "description": "Rebuild now when set",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid_input and other validation errors",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized: no, wrong, expired or revoked token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "license_required, or upgrade_required when the panel is not on the Premium plan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "scope_denied (token scope) or forbidden (the account cannot manage this object)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "hosting_unavailable: the server agent is busy, retry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sites/waf": {
+      "get": {
+        "tags": [
+          "Sites"
+        ],
+        "operationId": "get_sites_waf",
+        "summary": "Web application firewall of a site: mode, active, available and the latest stopped requests (events[]: time, ip, method, uri, status, rules[]: id, message). It is turned on with the waf, waf_app and waf_skip site settings",
+        "description": "Scope: `sites:read`.",
+        "security": [
+          {
+            "bearer": [
+              "sites:read"
+            ]
+          }
+        ],
+        "x-scope": "sites:read",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "description": "Site domain, e.g. shop.example.uz",
             "schema": {
               "type": "string"
             }

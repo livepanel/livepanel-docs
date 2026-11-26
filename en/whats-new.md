@@ -2,6 +2,12 @@
 
 LivePanel updates itself (it checks every 6 hours and when an administrator signs in). The version number is the date and time (UTC): `YYYY.MM.DD.HHMM`. The current version is shown at the bottom of the panel menu. This page lists the latest changes, newest first.
 
+## 2026.11.26.1641 — Web firewall (WAF) and wildcard SSL with outside DNS
+
+- **Web application firewall (WAF)** — ModSecurity + OWASP CRS per site: block or detect-only mode, WordPress/Drupal/Nextcloud exclusions, the list of stopped requests and switching a false-positive rule off in one click — [Site security](site-security.md#web-application-firewall-waf).
+- **Wildcard SSL works with the DNS elsewhere too**: one `_acme-challenge` NS record at the registrar is enough, and the panel shows the exact record — [SSL certificates](ssl.md#wildcard-certificate-premium).
+- API v2: `GET /sites/waf`, and the `waf`, `waf_app`, `waf_skip` site settings.
+
 ## 2026.11.26.1605 — Site statistics
 
 - The **visitor report** (GoAccess) opens again: before, the page kept showing the loading spinner. The report still opens isolated from the panel (sandbox) — [Statistics](statistics.md).

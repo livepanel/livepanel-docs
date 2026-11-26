@@ -34,6 +34,24 @@ ClamAV must be installed on the server: the administrator installs it from **Sys
 
 If the site was hacked: remove the malicious files, update the CMS and plugins, and change every password (panel, FTP, database, CMS administrator).
 
+## Web application firewall (WAF)
+
+![Web application firewall](../images/waf.png)
+
+**Site settings → Web firewall (WAF)** — ModSecurity with the OWASP Core Rule Set (CRS 3.3), per site. It checks the requests to the site and stops SQL injection, XSS, path traversal (`../`), command injection and malicious scanners.
+
+**Modes:**
+
+- **Off** — requests are not checked;
+- **Detect only** — nothing is blocked; suspicious requests are only logged. On a new site, run this mode for a day or two first;
+- **Block** — a request that looks like an attack is stopped with `403`.
+
+**Site application** — choosing WordPress, Drupal, Nextcloud, DokuWiki or XenForo turns on the CRS exclusions made for it, so its admin, editor and so on are not blocked by mistake.
+
+The **Latest stopped requests** table shows the time, IP, request and the rules that fired (ID and description). If a rule stops normal visitors (a false positive), click **Switch this rule off** next to it — the ID goes to **Rules switched off** — then **Save**. The rule is switched off for this site only.
+
+The first time, the panel installs the ModSecurity packages itself (up to a minute). Each site with the WAF on adds about 10–15 MB of memory to Nginx. Through the API: the `waf`, `waf_app`, `waf_skip` site settings, and the events — `GET /sites/waf` ([API v2](api-reference.md)).
+
 ## Other protection
 
 - Request rate limit for the site — [Site settings](site-settings.md) → Security.

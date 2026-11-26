@@ -224,6 +224,7 @@ Quyida barcha marshrutlar `https://…/api/v2` ga nisbatan yozilgan. `domain` �
 | POST | `/site-service` | write | `{"domain","action":"restart"}` |
 | GET | `/traffic?domain=&month=YYYY-MM` | read | Oylik trafik va kunlik grafik (`domain` siz — akkauntlar bo‘yicha) |
 | GET | `/sites/stats-report?domain=` | read | GoAccess tashriflar hisoboti (HTML) |
+| GET | `/sites/waf?domain=` | read | Veb-firewall: rejim, faolligi va oxirgi to‘xtatilgan so‘rovlar |
 | GET | `/apps/install?domain=` | read | Ilova o‘rnatish holati |
 | POST | `/apps/install` | write | CMS/framework o‘rnatish |
 | GET | `/get-site-photo/{domain}` | read | Sayt ko‘rinishi (rasm) |
@@ -257,7 +258,7 @@ Javobdagi `state`: `provisioning`, `active`, `disabled`, `failed` (sababi `error
 }
 ```
 
-`settings` ichida: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`, `cache_days`, `hsts`, `http2`, `redirects`, `access_log`, `error_log`, `auth_on`, `auth_user`, `rate_on`, `rate`, `rate_unit`, `burst_on`, `burst`, `no_delay`, `env`, `access_mode`, `access_list`, `php_ini`. `runtime` ni bo‘sh qoldirsangiz, backend turi o‘zgarmaydi; boshqa qiymat — turini almashtiradi ([Sayt sozlamalari](site-settings.md)).
+`settings` ichida: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`, `cache_days`, `hsts`, `http2`, `redirects`, `access_log`, `error_log`, `auth_on`, `auth_user`, `rate_on`, `rate`, `rate_unit`, `burst_on`, `burst`, `no_delay`, `env`, `access_mode`, `access_list`, `php_ini`, `waf` (`""` | `on` | `detect`), `waf_app` (`""` | `wordpress` | `drupal` | `nextcloud` | `dokuwiki` | `xenforo`), `waf_skip` (rule IDs). `runtime` ni bo‘sh qoldirsangiz, backend turi o‘zgarmaydi; boshqa qiymat — turini almashtiradi ([Sayt sozlamalari](site-settings.md)).
 
 **SSL** — `POST /sites/ssl`:
 

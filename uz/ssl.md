@@ -32,10 +32,16 @@ Jadvalda sayt, turi, amal qilish muddati va HTTPS’ga yo‘naltirish holati ko�
 
 Wildcard sertifikat domenning o‘zi va **barcha subdomenlari** uchun bitta sertifikat: `example.uz` va `*.example.uz`. Bu imkoniyat faqat **Premium** litsenziyali panellarda ishlaydi.
 
-Shartlar:
+Let’s Encrypt wildcard nomni faqat DNS orqali tekshiradi: `_acme-challenge.<domen>` TXT yozuvi kerak. Panel bu yozuvni o‘zi qo‘yishi uchun ikki yo‘ldan biri yetadi:
 
-- domenning DNS zonasi shu panelda bo‘lishi kerak — [Domenlar va DNS](dns.md);
-- registratorda domenning NS serverlari shu serverga yo‘naltirilgan bo‘lishi kerak (`dig NS example.uz`).
+1. **Domenning DNS’i shu serverda** — domen zonasi panelda ([Domenlar va DNS](dns.md)) va registratorda NS serverlari shu serverga yo‘naltirilgan (`dig NS example.uz`).
+2. **DNS boshqa joyda qoladi** (registrator yoki DNS provayderda) — u yerga **bitta NS yozuvi** qo‘shasiz va faqat tekshiruv nomi shu serverga topshiriladi:
+
+   ```
+   _acme-challenge.example.uz.  NS  example.uz.
+   ```
+
+   Aniq yozuvni panel o‘zi ko‘rsatadi: wildcard birinchi marta so‘ralganda xato oynasida chiqadi. NS qiymati — shu serverga yo‘naltirilgan nom (odatda domenning o‘zi). Qolgan DNS yozuvlari o‘zgarmaydi. Yozuv qo‘shilgach 5–10 daqiqa kutib, sertifikatni qayta so‘rang.
 
 Olish tartibi: **Yangi sertifikat** → **Let’s Encrypt** → **Wildcard: \*.domen ham** belgisini qo‘ying. Let’s Encrypt domenni DNS orqali tekshiradi. Panel `_acme-challenge` TXT yozuvini zonaga o‘zi qo‘shadi va tekshiruvdan keyin o‘chiradi. Sertifikat avtomatik yangilanadi, yangilanishda ham shu yo‘l ishlatiladi.
 
@@ -43,8 +49,8 @@ Wildcard sertifikatli sayt o‘z sayti bo‘lmagan barcha subdomenlarga ham javo
 
 Xatolar:
 
-- **zona yo‘q** — avval **Domenlar va DNS** bo‘limida zonani yarating;
-- **NS shu serverga yo‘naltirilmagan** — registratorda NS’ni almashtiring va tarqalishini kuting.
+- **DNS shu serverda emas** — panel ko‘rsatgan NS yozuvini qo‘shing (2-yo‘l) yoki domen NS’ini shu serverga ko‘chiring (1-yo‘l);
+- **zona yo‘q** — domen NS’i shu serverda, lekin panelda zonasi yo‘q: **Domenlar va DNS** bo‘limida zonani yarating.
 
 ## Avtomatik yangilanish
 
