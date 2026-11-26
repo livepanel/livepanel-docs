@@ -49,6 +49,8 @@ Har saqlashda zona **seriya raqami** o‘zi oshadi. **«Zonani o‘chirish»** z
 
 ## DNSSEC
 
+![DNSSEC](../images/dnssec.png)
+
 DNSSEC zonaning javoblarini raqamli imzolaydi: resolverlar javob haqiqatan shu serverdan kelganini tekshiradi va hech kim DNS javobini soxtalashtira olmaydi.
 
 1. Zona sahifasida **DNSSEC** kartasida **DNSSEC’ni yoqish** tugmasini bosing. BIND kalitni o‘zi yaratadi (ECDSA P-256) va zonani imzolaydi. Har bir o‘zgarish ham avtomatik imzolanadi.

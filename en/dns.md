@@ -49,6 +49,8 @@ The zone **serial number** grows on every save. **Delete zone** removes the zone
 
 ## DNSSEC
 
+![DNSSEC](../images/dnssec.png)
+
 DNSSEC signs the zone’s answers: resolvers check that an answer really came from this server, so nobody can forge a DNS answer.
 
 1. On the zone page, in the **DNSSEC** card, click **Turn on DNSSEC**. BIND makes the key (ECDSA P-256) and signs the zone. Every change is signed automatically too.

@@ -38,6 +38,14 @@
             "ru": "Лицензия и тарифы",
             "en": "License and plans"
           }
+        },
+        {
+          "slug": "whats-new",
+          "title": {
+            "uz": "Yangiliklar",
+            "ru": "Что нового",
+            "en": "What’s new"
+          }
         }
       ]
     },

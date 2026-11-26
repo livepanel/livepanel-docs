@@ -12,6 +12,7 @@ Panel ishlashi uchun shu o‘rnatishga tegishli litsenziya kerak. Litsenziya liv
 | Saytlar, bazalar, pochta, SSL, zaxira, Git va boshqa barcha asosiy funksiyalar | ✅ | ✅ | ✅ |
 | Akkauntlar bo‘yicha domen, disk, RAM, baza va reseller limitlari | — | ✅ | ✅ |
 | Hosting avtomatizatsiyasi API (tokenlar) | — | — | ✅ |
+| Wildcard SSL sertifikat (`*.domen`) | — | — | ✅ |
 
 Joriy narxlar: [livepanel.uz](https://livepanel.uz) → **Narxlar**.
 
@@ -29,6 +30,12 @@ Joriy narxlar: [livepanel.uz](https://livepanel.uz) → **Narxlar**.
 3. To‘lovdan so‘ng litsenziya panelga **avtomatik o‘rnatiladi**, kalit kiritish shart emas. Panel uni bir necha daqiqada o‘zi ham tekshirib oladi.
 
 Litsenziyani livepanel.uz kabinetidagi **Kalitlar** bo‘limidan ham ko‘rasiz, uzaytirasiz va boshqarasiz.
+
+## Litsenziya kalitlari qanday himoyalangan
+
+- **Kalit kiritish yoki kod bilan faollashtirish yo‘q.** Pullik litsenziya to‘lovdan keyin livepanel.uz’dan panelga o‘zi keladi; panel ham uni bir necha daqiqada o‘zi so‘rab oladi. Paneldagi tugma faqat **Free** tarifini faollashtiradi.
+- **Past tarif yuqorisini almashtirmaydi.** Panelda faol Premium bo‘lsa, Free yoki Pro kaliti uni almashtira olmaydi (panel «Panelda allaqachon yaxshiroq litsenziya bor» deydi). Bir xil tarifda esa muddati uzunroq kalit qoladi.
+- **Kalit faqat o‘z serveriga beriladi.** livepanel.uz kalitni faqat litsenziya bog‘langan server IP manziliga, yoki sotib olishda ko‘rsatilgan server manziliga beradi. O‘rnatish ID’sini bilish kalitni olish uchun yetmaydi.
 
 ## Muddat tugasa
 

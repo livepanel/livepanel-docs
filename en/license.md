@@ -12,6 +12,7 @@ The panel needs a license for this installation. Licenses are issued at livepane
 | Sites, databases, mail, SSL, backups, Git and all other core features | ✅ | ✅ | ✅ |
 | Per-account limits on domains, disk, RAM, databases and reseller users | — | ✅ | ✅ |
 | Hosting automation API (tokens) | — | — | ✅ |
+| Wildcard SSL certificate (`*.domain`) | — | — | ✅ |
 
 Current prices: [livepanel.uz](https://livepanel.uz) → **Pricing**.
 
@@ -29,6 +30,12 @@ Current prices: [livepanel.uz](https://livepanel.uz) → **Pricing**.
 3. After payment the license is **installed in the panel automatically** — no key to enter. The panel also picks it up by itself within a few minutes.
 
 You can also see, renew and manage the license in the **Keys** section of your livepanel.uz account.
+
+## How license keys are protected
+
+- **No key to type, no activation code.** A paid license arrives in the panel from livepanel.uz by itself after payment; the panel also asks for it on its own within a few minutes. The button in the panel activates the **Free** plan only.
+- **A lower plan never replaces a higher one.** While Premium is active, a Free or Pro key cannot replace it (the panel says “This panel already has a better license”). Within the same plan, the key that runs longer stays.
+- **A key goes only to its own server.** livepanel.uz hands a key only to the IP address the license is bound to, or to the server address given at purchase. Knowing the installation ID is not enough to get a key.
 
 ## When it expires
 

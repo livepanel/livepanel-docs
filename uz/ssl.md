@@ -28,6 +28,8 @@ Jadvalda sayt, turi, amal qilish muddati va HTTPS’ga yo‘naltirish holati ko�
 
 ## Wildcard sertifikat (Premium)
 
+![Wildcard sertifikat](../images/ssl-wildcard.png)
+
 Wildcard sertifikat domenning o‘zi va **barcha subdomenlari** uchun bitta sertifikat: `example.uz` va `*.example.uz`. Bu imkoniyat faqat **Premium** litsenziyali panellarda ishlaydi.
 
 Shartlar:

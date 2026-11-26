@@ -28,6 +28,8 @@ The table shows the site, type, validity and the HTTPS redirect. The row menu ha
 
 ## Wildcard certificate (Premium)
 
+![Wildcard certificate](../images/ssl-wildcard.png)
+
 A wildcard certificate is one certificate for the domain itself and **all its subdomains**: `example.uz` and `*.example.uz`. It is available only on panels with a **Premium** license.
 
 Requirements:
