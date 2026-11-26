@@ -446,7 +446,7 @@ Account fields: `name` (3–64 characters, cannot change later), `role` (`user`,
 | Method | Path | Purpose |
 |---|---|---|
 | GET | `/license` | License state and plan |
-| POST | `/license/activate` | Activate a license |
+| POST | `/license/activate` | `{"free": true}` — get the Free plan from livepanel.uz, or `{"token": "…"}` — install a signed key (paid keys arrive by themselves after payment). A lower plan never replaces an active higher one — `409 license_not_better` |
 | GET | `/metrics`, `/stats?range=` | Server load (`range`: `live`, `1h`, `24h`, `7d`, `30d`) |
 | GET / POST | `/system/services` | Services; `{"unit","action"}` — `start`, `stop`, `restart`, `enable`, `disable` |
 | GET / POST | `/applications` | Applications; `{"name","action"}` — `install`, `remove` |

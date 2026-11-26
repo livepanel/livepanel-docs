@@ -184,7 +184,8 @@ routes = [
      obj({'name': S(maxLength=40), 'color': S(examples=['#2563eb']), 'logo': S(description='data: URL, PNG/JPEG/WebP/GIF up to 1 MB'), 'remove_logo': B(), 'reset': B()})),
 
     ('Server', 'GET', '/license', 'system:read', 'License state and plan', [], None),
-    ('Server', 'POST', '/license/activate', 'system:write', 'Activate a license', [], dict(type='object')),
+    ('Server', 'POST', '/license/activate', 'system:write', 'free: true gets the Free plan from livepanel.uz; token installs a signed key (paid keys arrive by themselves after payment). A lower plan never replaces an active higher one: 409 license_not_better. Neither given: 400 license_token_required', [],
+     obj({'free': B(), 'token': S(description='A signed license key for this installation')})),
     ('Server', 'GET', '/metrics', 'system:read', 'Live server load', [], None),
     ('Server', 'GET', '/stats', 'system:read', 'Server load history', [q('range', 'live, 1h, 24h, 7d or 30d')], None),
     ('Server', 'GET', '/system/services', 'system:read', 'System services', [], None),

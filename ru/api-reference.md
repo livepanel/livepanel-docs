@@ -446,7 +446,7 @@ lp POST /git '{"domain":"api.example.uz","action":"deploy"}'
 | Метод | Путь | Назначение |
 |---|---|---|
 | GET | `/license` | Состояние лицензии и тариф |
-| POST | `/license/activate` | Активировать лицензию |
+| POST | `/license/activate` | `{"free": true}` — получить тариф Free с livepanel.uz, или `{"token": "…"}` — установить подписанный ключ (платные ключи приходят сами после оплаты). Более низкий тариф не заменяет активный более высокий — `409 license_not_better` |
 | GET | `/metrics`, `/stats?range=` | Нагрузка сервера (`range`: `live`, `1h`, `24h`, `7d`, `30d`) |
 | GET / POST | `/system/services` | Службы; `{"unit","action"}` — `start`, `stop`, `restart`, `enable`, `disable` |
 | GET / POST | `/applications` | Приложения; `{"name","action"}` — `install`, `remove` |

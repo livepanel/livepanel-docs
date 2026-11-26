@@ -6641,7 +6641,7 @@
           "Server"
         ],
         "operationId": "post_license_activate",
-        "summary": "Activate a license",
+        "summary": "free: true gets the Free plan from livepanel.uz; token installs a signed key (paid keys arrive by themselves after payment). A lower plan never replaces an active higher one: 409 license_not_better. Neither given: 400 license_token_required",
         "description": "Scope: `system:write`.",
         "security": [
           {
@@ -6656,7 +6656,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object"
+                "type": "object",
+                "properties": {
+                  "free": {
+                    "type": "boolean"
+                  },
+                  "token": {
+                    "type": "string",
+                    "description": "A signed license key for this installation"
+                  }
+                },
+                "additionalProperties": false
               }
             }
           }

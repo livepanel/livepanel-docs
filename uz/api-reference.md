@@ -446,7 +446,7 @@ Akkaunt maydonlari: `name` (3–64 belgi, keyin o‘zgarmaydi), `role` (`user`, 
 | Metod | Yo‘l | Vazifasi |
 |---|---|---|
 | GET | `/license` | Litsenziya holati va tarif |
-| POST | `/license/activate` | Litsenziyani faollashtirish |
+| POST | `/license/activate` | `{"free": true}` — Free tarifini livepanel.uz’dan olish, yoki `{"token": "…"}` — imzolangan kalitni o‘rnatish (pullik kalitlar to‘lovdan keyin o‘zi keladi). Past tarif faol yuqori tarifni almashtirmaydi — `409 license_not_better` |
 | GET | `/metrics`, `/stats?range=` | Server yuklamasi (`range`: `live`, `1h`, `24h`, `7d`, `30d`) |
 | GET / POST | `/system/services` | Xizmatlar; `{"unit","action"}` — `start`, `stop`, `restart`, `enable`, `disable` |
 | GET / POST | `/applications` | Ilovalar; `{"name","action"}` — `install`, `remove` |
