@@ -280,19 +280,20 @@ Inside `settings`: `aliases`, `gzip`, `gzip_level`, `nginx_static`, `static_ext`
 
 | Method | Path | Scope | Purpose |
 |---|---|---|---|
-| GET | `/files?domain=&path=` | read | A folder listing or a file’s text |
+| GET | `/files?domain=&path=` | read | A folder listing; add `&action=read` for a file’s text (its `hash` goes into `expected` when saving) |
 | POST | `/files` | write | `{"domain","path","action","content","expected"}` — `save`, `mkdir`, `create` |
 | POST | `/files/op` | write | Actions: `rename`, `move`, `copy`, `chmod`, `archive`, `extract`, `delete` |
-| POST | `/files/upload?domain=&path=` | write | Upload: the request body is the file itself, `path` is the full destination path |
+| POST | `/files/upload?domain=&path=` | write | Upload: the request body is the file itself, `path` is the full destination path. Add `&overwrite=1` to replace an existing file (otherwise `409 file_exists`) |
 | GET | `/files/download?domain=&path=` | read | Download a file |
 | GET | `/files/stats?domain=&path=` | read | Disk statistics: the largest folders and files |
 
-`/files/op` examples:
+`/files/op` examples. For `rename` the `target` is just the new name; for `archive` it is the archive name (made in the same folder); for `copy`, `move` and `extract` it is a folder path. An existing name or folder gives `409 file_exists`.
 
 ```json
-{ "domain": "shop.example.uz", "action": "rename", "path": "www/shop.example.uz/old.php", "target": "www/shop.example.uz/new.php" }
+{ "domain": "shop.example.uz", "action": "rename", "path": "www/shop.example.uz/old.php", "target": "new.php" }
+{ "domain": "shop.example.uz", "action": "copy", "path": "www/shop.example.uz/new.php", "target": "www/shop.example.uz/backup" }
 { "domain": "shop.example.uz", "action": "chmod", "paths": ["www/shop.example.uz/storage"], "mode": "755", "recursive": true }
-{ "domain": "shop.example.uz", "action": "archive", "paths": ["www/shop.example.uz"], "target": "site.zip" }
+{ "domain": "shop.example.uz", "action": "archive", "path": "www/shop.example.uz/public", "target": "public.zip" }
 { "domain": "shop.example.uz", "action": "extract", "path": "www/shop.example.uz/site.zip", "target": "www/shop.example.uz" }
 { "domain": "shop.example.uz", "action": "delete", "paths": ["www/shop.example.uz/tmp"] }
 ```
@@ -301,7 +302,7 @@ Uploading a file (Bash):
 
 ```bash
 curl -sS --fail-with-body -X POST \
-  "$PANEL/files/upload?domain=shop.example.uz&path=www/shop.example.uz/site.zip" \
+  "$PANEL/files/upload?domain=shop.example.uz&path=www/shop.example.uz/site.zip&overwrite=1" \
   -H "Authorization: Bearer $LP_TOKEN" --data-binary @site.zip
 ```
 
@@ -339,7 +340,7 @@ Sending the empty fields too is accepted: `{"action":"delete","name":"shop_db","
 | GET | `/dns/zone?zone=` | read | Records of a zone |
 | POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`) |
 
-`records` is the full list: `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` replaces all records of the zone — read them first with `GET /dns/zone`.
+`records` is the full list (`zone.records` from the `GET /dns/zone` response, NS records included): `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` replaces all records of the zone — read them first with `GET /dns/zone`.
 
 ### Mail — `mail`
 
@@ -379,7 +380,7 @@ Fields: `action`, `id`, `site`, `schedule` (`*/5 * * * *`), `command`, `comment`
 
 | Method | Path | Scope | Purpose |
 |---|---|---|---|
-| GET | `/backups?domain=` | read | Copies and the automatic backup schedule |
+| GET | `/backups?domain=` | read | `copies` — the copies, `job` — the current job (`state`: `running`, `done`, `failed`), `plan` — the schedule |
 | POST | `/backups` | write | `create`, `restore`, `delete`, `plan` |
 | GET | `/backups/download?domain=&id=` | read | Download a copy as `.tar` |
 | GET | `/backups/remote?domain=` | read | The site’s Google Drive/Dropbox state and the copies in storage |
@@ -402,7 +403,7 @@ Fields: `action`, `id`, `site`, `schedule` (`*/5 * * * *`), `command`, `comment`
 | Method | Path | Scope | Purpose |
 |---|---|---|---|
 | GET | `/git?domain=` | read | Repository, deploy key, webhook address, the last deploy log |
-| POST | `/git` | write | `save` (`repo`, `branch`, `command`), `deploy`, `token` (a new webhook), `disconnect` |
+| POST | `/git` | write | `save` (`repo`, `branch`, `command`), `deploy`, `token` (a new webhook), `disconnect`. `save` only sets it up — send `deploy` to take the files; the result is `last.state` in `GET /git` (`running`, `done`, `failed`) |
 
 Deploying from CI:
 

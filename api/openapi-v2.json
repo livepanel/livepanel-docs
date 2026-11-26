@@ -2149,7 +2149,7 @@
           "Files"
         ],
         "operationId": "get_files",
-        "summary": "List a folder or read a text file",
+        "summary": "List a folder, or with action=read the text of a file (its hash goes into expected when saving)",
         "description": "Scope: `files:read`.",
         "security": [
           {
@@ -2174,6 +2174,27 @@
             "in": "query",
             "required": true,
             "description": "Path relative to the site user’s home folder, e.g. www/shop.example.uz/index.php",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "description": "read — return the file text",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "read"
+              ]
+            }
+          },
+          {
+            "name": "encoding",
+            "in": "query",
+            "required": false,
+            "description": "Text encoding for action=read, default utf-8",
             "schema": {
               "type": "string"
             }
@@ -2411,7 +2432,8 @@
                     }
                   },
                   "target": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "rename: the new name only; archive: the archive name (made in the same folder); copy, move, extract: a folder path"
                   },
                   "mode": {
                     "type": "string",
@@ -2530,6 +2552,18 @@
             "description": "Full destination path including the file name",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "overwrite",
+            "in": "query",
+            "required": false,
+            "description": "1 replaces an existing regular file; otherwise an existing file gives 409 file_exists",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1"
+              ]
             }
           }
         ],
@@ -3680,7 +3714,7 @@
           "DNS"
         ],
         "operationId": "post_dns",
-        "summary": "Create or delete a zone, save all its records (save replaces the whole list)",
+        "summary": "Create or delete a zone, save all its records. save replaces the whole list: start from zone.records of GET /dns/zone (NS records are required)",
         "description": "Scope: `dns:write`.",
         "security": [
           {
@@ -4550,7 +4584,7 @@
           "Backups"
         ],
         "operationId": "get_backups",
-        "summary": "Backups of a site and its schedule",
+        "summary": "Backups of a site: copies, the current job (state running/done/failed) and plan",
         "description": "Scope: `backups:read`.",
         "security": [
           {
@@ -5388,7 +5422,7 @@
           "Git"
         ],
         "operationId": "post_git",
-        "summary": "Save the repository, deploy, make a new webhook address or disconnect",
+        "summary": "Save the repository (save only sets it up), deploy (takes the files; follow last.state in GET /git), make a new webhook address or disconnect",
         "description": "Scope: `git:write`.",
         "security": [
           {

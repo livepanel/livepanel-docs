@@ -280,19 +280,20 @@ console.log(sites.map((s) => s.domain));
 
 | Метод | Путь | Право | Назначение |
 |---|---|---|---|
-| GET | `/files?domain=&path=` | read | Список папки или текст файла |
+| GET | `/files?domain=&path=` | read | Список папки; для текста файла добавьте `&action=read` (его `hash` передаётся в `expected` при сохранении) |
 | POST | `/files` | write | `{"domain","path","action","content","expected"}` — `save`, `mkdir`, `create` |
 | POST | `/files/op` | write | Действия: `rename`, `move`, `copy`, `chmod`, `archive`, `extract`, `delete` |
-| POST | `/files/upload?domain=&path=` | write | Загрузка: тело запроса — сам файл, `path` — полный путь назначения |
+| POST | `/files/upload?domain=&path=` | write | Загрузка: тело запроса — сам файл, `path` — полный путь назначения. Чтобы заменить существующий файл — `&overwrite=1` (иначе `409 file_exists`) |
 | GET | `/files/download?domain=&path=` | read | Скачать файл |
 | GET | `/files/stats?domain=&path=` | read | Статистика диска: самые большие папки и файлы |
 
-Примеры `/files/op`:
+Примеры `/files/op`. Для `rename` в `target` — только новое имя; для `archive` — имя архива (создаётся в той же папке); для `copy`, `move` и `extract` — путь к папке. Существующее имя или папка дают `409 file_exists`.
 
 ```json
-{ "domain": "shop.example.uz", "action": "rename", "path": "www/shop.example.uz/old.php", "target": "www/shop.example.uz/new.php" }
+{ "domain": "shop.example.uz", "action": "rename", "path": "www/shop.example.uz/old.php", "target": "new.php" }
+{ "domain": "shop.example.uz", "action": "copy", "path": "www/shop.example.uz/new.php", "target": "www/shop.example.uz/backup" }
 { "domain": "shop.example.uz", "action": "chmod", "paths": ["www/shop.example.uz/storage"], "mode": "755", "recursive": true }
-{ "domain": "shop.example.uz", "action": "archive", "paths": ["www/shop.example.uz"], "target": "site.zip" }
+{ "domain": "shop.example.uz", "action": "archive", "path": "www/shop.example.uz/public", "target": "public.zip" }
 { "domain": "shop.example.uz", "action": "extract", "path": "www/shop.example.uz/site.zip", "target": "www/shop.example.uz" }
 { "domain": "shop.example.uz", "action": "delete", "paths": ["www/shop.example.uz/tmp"] }
 ```
@@ -301,7 +302,7 @@ console.log(sites.map((s) => s.domain));
 
 ```bash
 curl -sS --fail-with-body -X POST \
-  "$PANEL/files/upload?domain=shop.example.uz&path=www/shop.example.uz/site.zip" \
+  "$PANEL/files/upload?domain=shop.example.uz&path=www/shop.example.uz/site.zip&overwrite=1" \
   -H "Authorization: Bearer $LP_TOKEN" --data-binary @site.zip
 ```
 
@@ -339,7 +340,7 @@ curl -sS --fail-with-body -X POST \
 | GET | `/dns/zone?zone=` | read | Записи зоны |
 | POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`) |
 
-`records` — полный список: `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` заменяет все записи зоны — сначала получите их через `GET /dns/zone`.
+`records` — полный список (`zone.records` из ответа `GET /dns/zone`, вместе с NS-записями): `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` заменяет все записи зоны — сначала получите их через `GET /dns/zone`.
 
 ### Почта — `mail`
 
@@ -379,7 +380,7 @@ curl -sS --fail-with-body -X POST \
 
 | Метод | Путь | Право | Назначение |
 |---|---|---|---|
-| GET | `/backups?domain=` | read | Копии и расписание автоматического копирования |
+| GET | `/backups?domain=` | read | `copies` — копии, `job` — текущая задача (`state`: `running`, `done`, `failed`), `plan` — расписание |
 | POST | `/backups` | write | `create`, `restore`, `delete`, `plan` |
 | GET | `/backups/download?domain=&id=` | read | Скачать копию как `.tar` |
 | GET | `/backups/remote?domain=` | read | Состояние Google Drive/Dropbox для сайта и копии в хранилище |
@@ -402,7 +403,7 @@ curl -sS --fail-with-body -X POST \
 | Метод | Путь | Право | Назначение |
 |---|---|---|---|
 | GET | `/git?domain=` | read | Репозиторий, ключ развёртывания, адрес вебхука, лог последнего деплоя |
-| POST | `/git` | write | `save` (`repo`, `branch`, `command`), `deploy`, `token` (новый вебхук), `disconnect` |
+| POST | `/git` | write | `save` (`repo`, `branch`, `command`), `deploy`, `token` (новый вебхук), `disconnect`. `save` только настраивает — чтобы забрать файлы, отправьте `deploy`; результат — `last.state` в `GET /git` (`running`, `done`, `failed`) |
 
 Деплой из CI:
 

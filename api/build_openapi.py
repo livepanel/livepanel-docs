@@ -112,13 +112,13 @@ routes = [
     ('Sites', 'GET', '/node', 'sites:read', 'Installed Node.js versions', [], None),
     ('Sites', 'GET', '/python', 'sites:read', 'Installed Python versions', [], None),
 
-    ('Files', 'GET', '/files', 'files:read', 'List a folder or read a text file', [DOMAIN, PATHQ], None),
+    ('Files', 'GET', '/files', 'files:read', 'List a folder, or with action=read the text of a file (its hash goes into expected when saving)', [DOMAIN, PATHQ, q('action', 'read — return the file text', schema=S(enum=['read'])), q('encoding', 'Text encoding for action=read, default utf-8')], None),
     ('Files', 'POST', '/files', 'files:write', 'Save a file, create a file or a folder', [],
      obj({'domain': S(), 'path': S(), 'action': S(enum=['save', 'create', 'mkdir']), 'content': S(), 'expected': S(description='Hash from the read, protects from overwriting newer changes'), 'encoding': S()}, ['domain', 'path', 'action'])),
     ('Files', 'POST', '/files/op', 'files:write', 'File actions', [],
      obj({'domain': S(), 'action': S(enum=['rename', 'move', 'copy', 'chmod', 'archive', 'extract', 'delete']), 'path': S(), 'paths': ARR(S()),
-          'target': S(), 'mode': S(examples=['644', '755']), 'recursive': B()}, ['domain', 'action'])),
-    ('Files', 'POST', '/files/upload', 'files:write', 'Upload a file: the request body is the file itself (Content-Length required, up to 2 GB)', [DOMAIN, q('path', 'Full destination path including the file name', True)], 'binary'),
+          'target': S(description='rename: the new name only; archive: the archive name (made in the same folder); copy, move, extract: a folder path'), 'mode': S(examples=['644', '755']), 'recursive': B()}, ['domain', 'action'])),
+    ('Files', 'POST', '/files/upload', 'files:write', 'Upload a file: the request body is the file itself (Content-Length required, up to 2 GB)', [DOMAIN, q('path', 'Full destination path including the file name', True), q('overwrite', '1 replaces an existing regular file; otherwise an existing file gives 409 file_exists', schema=S(enum=['1']))], 'binary'),
     ('Files', 'GET', '/files/download', 'files:read', 'Download a file', [DOMAIN, PATHQ], None),
     ('Files', 'GET', '/files/stats', 'files:read', 'Disk usage: largest folders and files', [DOMAIN, PATHQ], None),
 
@@ -136,7 +136,7 @@ routes = [
 
     ('DNS', 'GET', '/dns', 'dns:read', 'DNS zones, server IP and BIND state', [], None),
     ('DNS', 'GET', '/dns/zone', 'dns:read', 'Records of a zone', [q('zone', 'Zone name', True)], None),
-    ('DNS', 'POST', '/dns', 'dns:write', 'Create or delete a zone, save all its records (save replaces the whole list)', [],
+    ('DNS', 'POST', '/dns', 'dns:write', 'Create or delete a zone, save all its records. save replaces the whole list: start from zone.records of GET /dns/zone (NS records are required)', [],
      obj({'action': S(enum=['create', 'save', 'delete']), 'zone': S(), 'records': ARR(obj({'name': S(), 'type': S(enum=['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV', 'CAA']), 'ttl': I(), 'value': S(), 'priority': I()})), 'ttl': I()}, ['action', 'zone'])),
 
     ('Mail', 'GET', '/mail', 'mail:read', 'Mail domains, mailboxes, connection details and DNS records', [], None),
@@ -152,7 +152,7 @@ routes = [
     ('Cron', 'POST', '/cron', 'cron:write', 'Create, update, toggle, run now or delete a task', [],
      obj({'action': S(enum=['create', 'update', 'toggle', 'run', 'delete']), 'id': S(), 'site': S(), 'schedule': S(examples=['*/5 * * * *']), 'command': S(), 'comment': S(), 'enabled': B()}, ['action'])),
 
-    ('Backups', 'GET', '/backups', 'backups:read', 'Backups of a site and its schedule', [DOMAIN], None),
+    ('Backups', 'GET', '/backups', 'backups:read', 'Backups of a site: copies, the current job (state running/done/failed) and plan', [DOMAIN], None),
     ('Backups', 'POST', '/backups', 'backups:write', 'Back up now, restore, delete a copy or set the schedule', [],
      obj({'domain': S(), 'action': S(enum=['create', 'restore', 'delete', 'plan']), 'id': S(), 'files': B(), 'databases': B(),
           'plan': obj({'schedule': S(enum=['off', 'daily', 'weekly']), 'hour': I(minimum=0, maximum=23), 'weekday': I(minimum=0, maximum=6, description='0 = Sunday'), 'keep': I(), 'files': B(), 'databases': B()})}, ['domain', 'action'])),
@@ -165,7 +165,7 @@ routes = [
      obj({'provider': S(enum=['gdrive', 'dropbox']), 'action': S(enum=['disconnect', 'cancel']), 'origin': S()}, ['provider', 'action'])),
 
     ('Git', 'GET', '/git', 'git:read', 'Repository, deploy key, webhook address and the last deploy log', [DOMAIN], None),
-    ('Git', 'POST', '/git', 'git:write', 'Save the repository, deploy, make a new webhook address or disconnect', [],
+    ('Git', 'POST', '/git', 'git:write', 'Save the repository (save only sets it up), deploy (takes the files; follow last.state in GET /git), make a new webhook address or disconnect', [],
      obj({'domain': S(), 'action': S(enum=['save', 'deploy', 'token', 'disconnect']), 'repo': S(), 'branch': S(), 'command': S()}, ['domain', 'action'])),
 
     ('Accounts', 'GET', '/users', 'users:read', 'Panel accounts', [], None),

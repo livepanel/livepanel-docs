@@ -280,19 +280,20 @@ Javobdagi `state`: `provisioning`, `active`, `disabled`, `failed` (sababi `error
 
 | Metod | Yo‘l | Ruxsat | Vazifasi |
 |---|---|---|---|
-| GET | `/files?domain=&path=` | read | Papka ro‘yxati yoki fayl matni |
+| GET | `/files?domain=&path=` | read | Papka ro‘yxati; fayl matni uchun `&action=read` (javobdagi `hash` — saqlashda `expected` sifatida) |
 | POST | `/files` | write | `{"domain","path","action","content","expected"}` — `save`, `mkdir`, `create` |
 | POST | `/files/op` | write | Amallar: `rename`, `move`, `copy`, `chmod`, `archive`, `extract`, `delete` |
-| POST | `/files/upload?domain=&path=` | write | Fayl yuklash: so‘rov tanasi — faylning o‘zi, `path` — saqlanadigan to‘liq yo‘l |
+| POST | `/files/upload?domain=&path=` | write | Fayl yuklash: so‘rov tanasi — faylning o‘zi, `path` — saqlanadigan to‘liq yo‘l. Mavjud faylni almashtirish uchun `&overwrite=1` (aks holda `409 file_exists`) |
 | GET | `/files/download?domain=&path=` | read | Faylni yuklab olish |
 | GET | `/files/stats?domain=&path=` | read | Disk statistikasi: eng katta papka va fayllar |
 
-`/files/op` misollari:
+`/files/op` misollari. `rename` da `target` — faqat yangi nom; `archive` da — arxiv nomi (o‘sha papkada yaratiladi); `copy`, `move`, `extract` da — papka yo‘li. Mavjud nom yoki papka `409 file_exists` qaytaradi.
 
 ```json
-{ "domain": "shop.example.uz", "action": "rename", "path": "www/shop.example.uz/old.php", "target": "www/shop.example.uz/new.php" }
+{ "domain": "shop.example.uz", "action": "rename", "path": "www/shop.example.uz/old.php", "target": "new.php" }
+{ "domain": "shop.example.uz", "action": "copy", "path": "www/shop.example.uz/new.php", "target": "www/shop.example.uz/backup" }
 { "domain": "shop.example.uz", "action": "chmod", "paths": ["www/shop.example.uz/storage"], "mode": "755", "recursive": true }
-{ "domain": "shop.example.uz", "action": "archive", "paths": ["www/shop.example.uz"], "target": "site.zip" }
+{ "domain": "shop.example.uz", "action": "archive", "path": "www/shop.example.uz/public", "target": "public.zip" }
 { "domain": "shop.example.uz", "action": "extract", "path": "www/shop.example.uz/site.zip", "target": "www/shop.example.uz" }
 { "domain": "shop.example.uz", "action": "delete", "paths": ["www/shop.example.uz/tmp"] }
 ```
@@ -301,7 +302,7 @@ Fayl yuklash (Bash):
 
 ```bash
 curl -sS --fail-with-body -X POST \
-  "$PANEL/files/upload?domain=shop.example.uz&path=www/shop.example.uz/site.zip" \
+  "$PANEL/files/upload?domain=shop.example.uz&path=www/shop.example.uz/site.zip&overwrite=1" \
   -H "Authorization: Bearer $LP_TOKEN" --data-binary @site.zip
 ```
 
@@ -339,7 +340,7 @@ Bo‘sh maydonlarni ham yuboring: `{"action":"delete","name":"shop_db","user":""
 | GET | `/dns/zone?zone=` | read | Zona yozuvlari |
 | POST | `/dns` | write | `create` (`zone`), `save` (`zone`, `records`), `delete` (`zone`) |
 
-`records` — to‘liq ro‘yxat: `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` zonaning barcha yozuvlarini almashtiradi — avval `GET /dns/zone` bilan oling.
+`records` — to‘liq ro‘yxat (`GET /dns/zone` javobidagi `zone.records`, NS yozuvlari bilan birga): `{"name":"www","type":"A","ttl":3600,"value":"203.0.113.10","priority":0}`. `save` zonaning barcha yozuvlarini almashtiradi — avval `GET /dns/zone` bilan oling.
 
 ### Pochta — `mail`
 
@@ -379,7 +380,7 @@ Maydonlar: `action`, `id`, `site`, `schedule` (`*/5 * * * *`), `command`, `comme
 
 | Metod | Yo‘l | Ruxsat | Vazifasi |
 |---|---|---|---|
-| GET | `/backups?domain=` | read | Nusxalar va avtomatik zaxira jadvali |
+| GET | `/backups?domain=` | read | `copies` — nusxalar, `job` — joriy jarayon (`state`: `running`, `done`, `failed`), `plan` — jadval |
 | POST | `/backups` | write | `create`, `restore`, `delete`, `plan` |
 | GET | `/backups/download?domain=&id=` | read | Nusxani `.tar` qilib yuklab olish |
 | GET | `/backups/remote?domain=` | read | Saytning Google Drive/Dropbox holati va ombordagi nusxalar |
@@ -402,7 +403,7 @@ Maydonlar: `action`, `id`, `site`, `schedule` (`*/5 * * * *`), `command`, `comme
 | Metod | Yo‘l | Ruxsat | Vazifasi |
 |---|---|---|---|
 | GET | `/git?domain=` | read | Repozitoriy, deploy kaliti, webhook manzili, oxirgi deploy logi |
-| POST | `/git` | write | `save` (`repo`, `branch`, `command`), `deploy`, `token` (yangi webhook), `disconnect` |
+| POST | `/git` | write | `save` (`repo`, `branch`, `command`), `deploy`, `token` (yangi webhook), `disconnect`. `save` faqat sozlaydi — fayllarni olish uchun keyin `deploy` yuboring; natija `GET /git` dagi `last.state` (`running`, `done`, `failed`) |
 
 CI’dan deploy:
 
