@@ -8,7 +8,7 @@
 
 | Group | Applications |
 |---|---|
-| PHP | PHP 5.6 – 8.6 (each version with FPM, CGI, CLI and the common extensions). PHP 8.1 is the system version |
+| PHP | PHP 5.6 – 8.6 (each version with FPM, CGI, CLI and the common extensions). the system version is PHP 8.1 on Ubuntu 22.04 and PHP 8.3 on Ubuntu 24.04 |
 | Node.js | Node.js 16 – 26 (official nodejs.org builds, checked by sha256) |
 | Python | Python 3.11 – 3.15 (python-build-standalone, checked by sha256) |
 | Services | Redis, Memcached, fail2ban, BIND (DNS), SpamAssassin, ClamAV, Roundcube webmail |
@@ -19,7 +19,7 @@
 
 - The **Install** icon installs the application. It can take a few minutes; the status goes from **Installing** to **Installed**.
 - The **Remove** icon removes it.
-- System parts (e.g. PHP 8.1, phpMyAdmin) cannot be removed.
+- System parts (e.g. the system PHP, phpMyAdmin) cannot be removed.
 - A version used by sites cannot be removed — the list says “used by N sites”. Move the sites to another version first.
 - On an error the status becomes **Error** and the reason is shown.
 

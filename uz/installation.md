@@ -6,7 +6,7 @@ LivePanel toza serverga bitta buyruq bilan, odatda 5–10 daqiqada o‘rnatiladi
 
 | | Minimal | Tavsiya |
 |---|---|---|
-| Operatsion tizim | **Ubuntu 22.04 LTS**, toza o‘rnatilgan | Ubuntu 22.04 LTS |
+| Operatsion tizim | **Ubuntu 22.04 LTS** yoki **Ubuntu 24.04 LTS**, toza o‘rnatilgan | Ubuntu 24.04 LTS |
 | Protsessor | 1 vCPU, x86_64 | 2 vCPU va ko‘proq |
 | Tezkor xotira | 1 GB | 2 GB va ko‘proq |
 | Disk | 10 GB | 20 GB va ko‘proq (SSD) |
@@ -35,7 +35,7 @@ Skript quyidagilarni ketma-ket bajaradi va har bir qadamni ekranda ko‘rsatadi:
 
 1. LivePanel paketini yuklab oladi va uning **imzosi hamda nazorat summasini tekshiradi**;
 2. panelni o‘rnatadi;
-3. Nginx va PHP 8.1-FPM’ni o‘rnatadi;
+3. Nginx va tizim PHP’sini (FPM) o‘rnatadi: Ubuntu 22.04’da PHP 8.1, Ubuntu 24.04’da PHP 8.3;
 4. MySQL 8 va phpMyAdmin’ni o‘rnatadi;
 5. FTP/SFTP serveri (ProFTPD)ni o‘rnatadi;
 6. Let’s Encrypt mijozi (certbot) va Node.js LTS’ni o‘rnatadi;
@@ -83,6 +83,6 @@ Boshqa server buyruqlari — [Server buyruqlari](console.md).
 
 ## Muammolar
 
-- **«Ubuntu 22.04 LTS is required»** — boshqa OS o‘rnatilgan. Serverni Ubuntu 22.04 bilan qayta o‘rnating.
+- **«Ubuntu 22.04 or 24.04 LTS is required»** — boshqa OS o‘rnatilgan. Serverni Ubuntu 22.04 yoki 24.04 bilan qayta o‘rnating.
 - **Panel ochilmayapti** — 6563-port provayderning tashqi firewall’ida yopiq bo‘lishi mumkin. Hosting provayderingiz boshqaruv panelidan portni oching.
 - **O‘rnatish to‘xtab qoldi** — `/var/log/livepanel-install.log` faylining oxirini ko‘ring va buyruqni qayta ishga tushiring.

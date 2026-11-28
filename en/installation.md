@@ -6,7 +6,7 @@ LivePanel is installed on a clean server with one command, usually in 5–10 min
 
 | | Minimum | Recommended |
 |---|---|---|
-| Operating system | **Ubuntu 22.04 LTS**, freshly installed | Ubuntu 22.04 LTS |
+| Operating system | **Ubuntu 22.04 LTS** or **Ubuntu 24.04 LTS**, freshly installed | Ubuntu 24.04 LTS |
 | CPU | 1 vCPU, x86_64 | 2 vCPU or more |
 | Memory | 1 GB | 2 GB or more |
 | Disk | 10 GB | 20 GB or more (SSD) |
@@ -35,7 +35,7 @@ The script runs these steps and shows each one on the screen:
 
 1. downloads the LivePanel package and **checks its signature and checksum**;
 2. installs the panel;
-3. installs Nginx and PHP 8.1-FPM;
+3. installs Nginx and the system PHP (FPM): PHP 8.1 on Ubuntu 22.04, PHP 8.3 on Ubuntu 24.04;
 4. installs MySQL 8 and phpMyAdmin;
 5. installs the FTP/SFTP server (ProFTPD);
 6. installs the Let’s Encrypt client (certbot) and Node.js LTS;
@@ -83,6 +83,6 @@ Other server commands — [Server commands](console.md).
 
 ## Troubleshooting
 
-- **“Ubuntu 22.04 LTS is required”** — another OS is installed. Reinstall the server with Ubuntu 22.04.
+- **“Ubuntu 22.04 or 24.04 LTS is required”** — another OS is installed. Reinstall the server with Ubuntu 22.04 or 24.04.
 - **The panel does not open** — port 6563 may be closed in your provider’s external firewall. Open it in the provider’s control panel.
 - **The installation stopped** — check the end of `/var/log/livepanel-install.log` and run the command again.
