@@ -8,7 +8,7 @@
 
 | Guruh | Ilovalar |
 |---|---|
-| PHP | PHP 5.6 – 8.6 (har bir versiya FPM, CGI, CLI va asosiy kengaytmalar bilan). tizim versiyasi Ubuntu 22.04’da PHP 8.1, Ubuntu 24.04’da PHP 8.3 |
+| PHP | PHP 5.6 – 8.6 (har bir versiya FPM, CGI, CLI va asosiy kengaytmalar bilan). Tizim versiyasi Ubuntu 22.04’da PHP 8.1, Ubuntu 24.04’da PHP 8.3 |
 | Node.js | Node.js 16 – 26 (rasmiy nodejs.org yig‘malari, sha256 bilan tekshiriladi) |
 | Python | Python 3.11 – 3.15 (python-build-standalone, sha256 bilan tekshiriladi) |
 | Xizmatlar | Redis, Memcached, fail2ban, BIND (DNS), SpamAssassin, ClamAV, Roundcube webmail |

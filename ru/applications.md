@@ -8,7 +8,7 @@
 
 | Группа | Приложения |
 |---|---|
-| PHP | PHP 5.6 – 8.6 (каждая версия с FPM, CGI, CLI и основными расширениями). системная версия — PHP 8.1 на Ubuntu 22.04, PHP 8.3 на Ubuntu 24.04 |
+| PHP | PHP 5.6 – 8.6 (каждая версия с FPM, CGI, CLI и основными расширениями). Системная версия — PHP 8.1 на Ubuntu 22.04, PHP 8.3 на Ubuntu 24.04 |
 | Node.js | Node.js 16 – 26 (официальные сборки nodejs.org, проверка по sha256) |
 | Python | Python 3.11 – 3.15 (python-build-standalone, проверка по sha256) |
 | Службы | Redis, Memcached, fail2ban, BIND (DNS), SpamAssassin, ClamAV, веб-почта Roundcube |
