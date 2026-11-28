@@ -8,6 +8,13 @@ The **Settings** page in the account menu holds the panel and account security s
 
 Enter the **current password** and the **new password** (6–72 characters). After saving you sign in again with the new password.
 
+## SSH keys and active sessions
+
+**Settings → Security**, at the bottom:
+
+- **SSH keys** — add your public key (`~/.ssh/id_ed25519.pub`) and sign in over SSH/SFTP without a password. The keys work while SSH is on for the account; ed25519, ecdsa and RSA of 2048 bits or more are accepted.
+- **Active sessions** — from which device and IP and when the account signed in. End a session you do not recognise, or press **Sign out of all other sessions**, then change your password.
+
 ## Two-factor sign-in (2FA)
 
 ![Two-factor sign-in](../images/two-factor.png)

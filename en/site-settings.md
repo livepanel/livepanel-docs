@@ -79,3 +79,9 @@ Restricting access by IP — [Site security and scanning](site-security.md).
 
 - **Attack mode (Premium)** — every visitor first passes a short browser check (about 2 seconds, once in 12 hours); bots without JavaScript never reach the site. Turn it on only during an attack: search engines, APIs, payment callbacks and webhooks cannot pass the check either.
 - **Blocking by country (Pro)** — **Only the chosen countries** or **All but the chosen countries**; the others get “403 Forbidden”. Country data: the free DB-IP database (refreshed monthly).
+
+## Maintenance
+
+**Maintenance mode** — visitors see a “The site is under maintenance” page (with code 503, so search engines keep the site in their index). You write the page title and text yourself. The IPs in **Addresses that see the site** see the site as usual; your own address is added when you turn the mode on. SSL certificate renewal is not blocked.
+
+**Hotlink protection** (in the Protection section) — other sites cannot show this site’s images and videos on their pages. Search engines, direct opening and the listed domains (with their subdomains) still work.

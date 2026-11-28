@@ -8,6 +8,13 @@ Akkaunt menyusidagi **Sozlamalar** sahifasida panel va akkaunt xavfsizligi sozla
 
 **Amaldagi parol** va **yangi parol**ni (6–72 belgi) kiriting. Saqlangach panelga yangi parol bilan qaytadan kirasiz.
 
+## SSH kalitlari va faol seanslar
+
+**Sozlamalar → Xavfsizlik** pastida:
+
+- **SSH kalitlari** — ochiq kalitingizni (`~/.ssh/id_ed25519.pub`) qo‘shsangiz, SSH/SFTP’ga parolsiz kirasiz. Kalitlar hisob uchun SSH yoqilganda ishlaydi; ed25519, ecdsa va kamida 2048 bitli RSA qabul qilinadi.
+- **Faol seanslar** — hisobga qaysi qurilma va IP’dan, qachon kirilgani. Tanimagan seansni tugating yoki **Boshqa barcha seanslardan chiqish** tugmasini bosing, keyin parolni almashtiring.
+
 ## Ikki bosqichli kirish (2FA)
 
 ![Ikki bosqichli kirish](../images/two-factor.png)

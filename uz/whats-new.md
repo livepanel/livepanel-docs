@@ -2,6 +2,13 @@
 
 LivePanel yangi versiyani har 6 soatda va administrator kirganda tekshiradi; u avtomatik yoki **Yangilash** tugmasi bilan o‘rnatiladi — [Yangilanishlar va xabarnomalar](updates-notifications.md). Versiya raqami — sana va vaqt (UTC): `YYYY.MM.DD.HHMM`. Joriy versiya panel menyusining pastida ko‘rinadi. Bu sahifada oxirgi o‘zgarishlar — yangisi tepada.
 
+## 2026.11.28.1825 — Texnik xizmat rejimi, hotlink, SSH kalitlar, seanslar
+
+- **Texnik xizmat rejimi**: sayt o‘rniga o‘zingiz yozgan sahifa chiqadi, sizning IP’ingiz saytni odatdagidek ko‘radi — [Sayt sozlamalari](site-settings.md).
+- **Hotlink himoyasi**: boshqa saytlar rasm va videolaringizni o‘z sahifalarida ko‘rsata olmaydi.
+- **SSH kalitlari**: SSH/SFTP’ga parolsiz kirish — [Panel sozlamalari](panel-settings.md).
+- **Faol seanslar**: hisobga qayerdan kirilgani va boshqa seanslardan chiqish.
+
 ## 2026.11.28.1801 — «Nima yangi» darhol ko‘rinadi
 
 - Yangilanish xabaridagi **Nima yangi** oynasi yangi versiya tavsifini reliz chiqqan zahoti ko‘rsatadi (avval ba’zan bo‘sh chiqardi).

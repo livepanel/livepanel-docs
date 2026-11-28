@@ -79,3 +79,9 @@ Saytga kirishni IP bo‘yicha cheklash — [Sayt xavfsizligi va skanerlash](site
 
 - **Hujum rejimi (Premium)** — har bir tashrif buyuruvchi avval qisqa brauzer tekshiruvidan o‘tadi (taxminan 2 soniya, 12 soatda bir marta); JavaScript ishlatmaydigan botlar saytga yetib bormaydi. Faqat hujum paytida yoqing: qidiruv tizimlari, API, to‘lov callback’lari va webhook’lar ham tekshiruvdan o‘tolmaydi.
 - **Davlat bo‘yicha bloklash (Pro)** — **Faqat tanlangan davlatlar** yoki **Tanlanganlardan tashqari hammasi**; boshqalar «403 Forbidden» oladi. Davlatlar ma’lumoti — DB-IP’ning bepul bazasi (har oy yangilanadi).
+
+## Texnik xizmat
+
+**Texnik xizmat rejimi** — tashrif buyuruvchilar «Saytda texnik ishlar olib borilmoqda» sahifasini ko‘radi (503 kodi bilan, shuning uchun qidiruv tizimlari saytni indeksdan chiqarmaydi). Sahifa sarlavhasi va matnini o‘zingiz yozasiz. **Saytni ko‘radigan manzillar** ro‘yxatidagi IP’lar saytni odatdagidek ko‘radi; rejimni yoqqaningizda o‘z manzilingiz o‘zi qo‘shiladi. SSL sertifikat yangilanishi to‘silmaydi.
+
+**Hotlink himoyasi** («Himoya» bo‘limida) — boshqa saytlar bu saytning rasm va videolarini o‘z sahifalarida ko‘rsata olmaydi. Qidiruv tizimlari, to‘g‘ridan-to‘g‘ri ochish va ro‘yxatga kiritilgan domenlar (subdomenlari bilan) ishlayveradi.

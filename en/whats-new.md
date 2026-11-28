@@ -2,6 +2,13 @@
 
 LivePanel checks for a new version every 6 hours and when an administrator signs in; it installs automatically or with the **Update** button — [Updates and notifications](updates-notifications.md). The version number is the date and time (UTC): `YYYY.MM.DD.HHMM`. The current version is shown at the bottom of the panel menu. This page lists the latest changes, newest first.
 
+## 2026.11.28.1825 — Maintenance mode, hotlink, SSH keys, sessions
+
+- **Maintenance mode**: your own page in place of the site, while your IP sees the site as usual — [Site settings](site-settings.md).
+- **Hotlink protection**: other sites cannot show your images and videos.
+- **SSH keys**: SSH/SFTP without a password — [Panel settings](panel-settings.md).
+- **Active sessions**: where the account is signed in, and signing out of the other sessions.
+
 ## 2026.11.28.1801 — “What’s new” shows at once
 
 - The **What’s new** window of the update notice shows the description of a new version right after its release (before, it was sometimes empty).
