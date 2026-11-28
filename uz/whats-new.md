@@ -2,6 +2,15 @@
 
 LivePanel yangi versiyani har 6 soatda va administrator kirganda tekshiradi; u avtomatik yoki **Yangilash** tugmasi bilan o‘rnatiladi — [Yangilanishlar va xabarnomalar](updates-notifications.md). Versiya raqami — sana va vaqt (UTC): `YYYY.MM.DD.HHMM`. Joriy versiya panel menyusining pastida ko‘rinadi. Bu sahifada oxirgi o‘zgarishlar — yangisi tepada.
 
+## 2026.11.28.1654 — Yangi tillar
+
+- Panel endi **ispan, ukrain, turk va italyan** tillarida ham ishlaydi (til menyuda tanlanadi). Xatlar bu tillarda ingliz tilida keladi.
+- Til ro‘yxati ochilganda bayroqlar endi teskari aylanmaydi.
+
+## 2026.11.28.1617 — HTTP orqali kirish
+
+- `http://IP:6563` ochilsa, panel o‘zi `https://` ga yo‘naltiradi.
+
 ## 2026.11.28.1534 — Avtomatik yangilash sozlamasi
 
 - **Sozlamalar → Avtomatik yangilash**: yangilanishlarni avtomatik qabul qilishni yoqish yoki o‘chirish mumkin. Standart holatda o‘chirilgan.
