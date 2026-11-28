@@ -38,6 +38,16 @@ Bitta IP manzildan belgilangan vaqt ichida shuncha marta noto‘g‘ri parol kir
 - **Bloklangan IP manzillar** — qaysi xizmatda bloklangani; **«Blokdan chiqarish»**.
 - **Himoyalangan xizmatlar (fail2ban)** — har bir xizmat bo‘yicha xatolar va bloklar soni. fail2ban o‘rnatilmagan bo‘lsa, uni **Ilovalar** bo‘limidan o‘rnating.
 
+## Virus tekshiruvi (administrator)
+
+**Sozlamalar → Virus tekshiruvi** — barcha faol saytlarni ClamAV antivirusi bilan jadval bo‘yicha tekshirish.
+
+- **Barcha saytlarni jadval bo‘yicha tekshirish** tugmasini yoqing.
+- **Qachon tekshirilsin**: har kuni yoki har 2–7 kunda bir marta, soat:daqiqa va AM/PM. Vaqt serverning vaqt zonasida.
+- Saytlar birin-ketin, past ustuvorlikda tekshiriladi. Har bir sayt natijasi uning «Tekshirish» sahifasida ham ko‘rinadi — [Sayt xavfsizligi](site-security.md).
+- Shubhali fayl topilsa, administratorning tiklash emailiga xat keladi.
+- ClamAV «Ilovalar» bo‘limidan o‘rnatiladi; o‘rnatilmagan bo‘lsa, tekshiruv ishlamaydi.
+
 ## Brending (administrator va reseller)
 
 ![Brending](../images/branding.png)

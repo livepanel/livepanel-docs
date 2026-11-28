@@ -38,6 +38,16 @@ An IP address is blocked after this many wrong passwords within the given time. 
 - **Blocked IP addresses** — with the service where they were blocked; **Unblock**.
 - **Protected services (fail2ban)** — failures and blocks per service. If fail2ban is not installed, install it from **Applications**.
 
+## Virus scan (administrator)
+
+**Settings → Virus scan** — scan every active site with the ClamAV antivirus on a schedule.
+
+- Turn on **Scan all sites on a schedule**.
+- **When to scan**: every day or every 2–7 days, hours:minutes and AM/PM. The time is in the server’s time zone.
+- Sites are scanned one after another at low priority. The result of each site also shows on its Scan page — [Site security](site-security.md).
+- If suspicious files are found, the administrator’s recovery email gets a message.
+- ClamAV is installed in Applications; without it the scan does not run.
+
 ## Branding (administrator and reseller)
 
 ![Branding](../images/branding.png)

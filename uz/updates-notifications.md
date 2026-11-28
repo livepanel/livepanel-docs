@@ -5,6 +5,8 @@
 Yangilanishlar **Sozlamalar → Avtomatik yangilash** bo‘limida boshqariladi (faqat administrator).
 
 - **Yangilanishlarni avtomatik qabul qilish** — yoqilgan bo‘lsa, yangi versiya chiqishi bilan panel o‘zi yangilanadi.
+- **Jadval**: yoqilganda yangilanish qachon tekshirilib o‘rnatilishini tanlaysiz — har kuni yoki har 2–7 kunda bir marta, soat va daqiqa (AM/PM). Vaqt serverning vaqt zonasida; bo‘limda serverning hozirgi vaqti va keyingi yangilash vaqti ko‘rinadi.
+- **Nima yangi**: yangilanish xabaridagi tugma va bo‘limdagi ro‘yxat o‘rnatilmagan versiyalarda nima o‘zgarganini ko‘rsatadi.
 - Standart holatda **o‘chirilgan**: yangi versiya chiqsa, ekranning yuqori o‘ng burchagida `{versiya} Yangilanish mavjud` xabari va **Yangilash** tugmasi chiqadi. Tugma bosilganda panel yangilanadi va sahifa yangi versiyada qayta ochiladi. Yangilamaguningizcha xabar turaveradi; panel eng oxirgi versiyaga o‘tgach xabar yo‘qoladi.
 - Bo‘limda o‘rnatilgan versiya va mavjud yangilanish ham ko‘rinadi, **Yangilash** tugmasi u yerda ham bor.
 

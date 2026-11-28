@@ -2,6 +2,13 @@
 
 LivePanel yangi versiyani har 6 soatda va administrator kirganda tekshiradi; u avtomatik yoki **Yangilash** tugmasi bilan o‘rnatiladi — [Yangilanishlar va xabarnomalar](updates-notifications.md). Versiya raqami — sana va vaqt (UTC): `YYYY.MM.DD.HHMM`. Joriy versiya panel menyusining pastida ko‘rinadi. Bu sahifada oxirgi o‘zgarishlar — yangisi tepada.
 
+## 2026.11.28.1714 — Yangilanish jadvali va virus tekshiruvi
+
+- **Avtomatik yangilash** endi jadval bo‘yicha ishlaydi: har 1–7 kunda bir marta, tanlangan soatda (AM/PM) — [Yangilanishlar va xabarnomalar](updates-notifications.md).
+- Yuqoridagi «Yangilanish mavjud» xabarida **Nima yangi** tugmasi bor: o‘rnatishdan oldin versiyada nima o‘zgarganini ko‘rsatadi.
+- **Sozlamalar → Virus tekshiruvi**: barcha saytlar ClamAV bilan jadval bo‘yicha tekshiriladi; shubhali fayl topilsa, administratorga email keladi — [Panel sozlamalari](panel-settings.md).
+- Email xatlar endi panelning barcha tillarida yoziladi (ispan, ukrain, turk, italyan ham).
+
 ## 2026.11.28.1654 — Yangi tillar
 
 - Panel endi **ispan, ukrain, turk va italyan** tillarida ham ishlaydi (til menyuda tanlanadi). Xatlar bu tillarda ingliz tilida keladi.

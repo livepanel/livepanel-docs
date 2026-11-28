@@ -5,6 +5,8 @@
 Updates are managed in **Settings → Automatic updates** (administrator only).
 
 - **Accept updates automatically** — when on, the panel updates itself as soon as a new version is out.
+- **Schedule**: when on, you choose when updates are checked and installed — every day or every 2–7 days, hour and minutes (AM/PM). The time is in the server’s time zone; the section shows the server’s current time and the next update time.
+- **What’s new**: the button in the update notice and the list in the section show what changed in the versions not installed yet.
 - It is **off by default**: when a new version is out, the notice `{version} Update available` with an **Update** button appears at the top right of the screen. Pressing it updates the panel and reopens the page in the new version. The notice stays until you update; once the panel is on the latest version it goes away.
 - The section also shows the installed version and the available update, with an **Update** button too.
 

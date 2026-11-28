@@ -2,6 +2,13 @@
 
 LivePanel checks for a new version every 6 hours and when an administrator signs in; it installs automatically or with the **Update** button — [Updates and notifications](updates-notifications.md). The version number is the date and time (UTC): `YYYY.MM.DD.HHMM`. The current version is shown at the bottom of the panel menu. This page lists the latest changes, newest first.
 
+## 2026.11.28.1714 — Update schedule and virus scan
+
+- **Automatic updates** now run on a schedule: every 1–7 days at the time you choose (AM/PM) — [Updates and notifications](updates-notifications.md).
+- The “Update available” notice at the top has a **What’s new** button: see what changed in the version before installing it.
+- **Settings → Virus scan**: every site is scanned with ClamAV on a schedule; if suspicious files are found, the administrator gets an email — [Panel settings](panel-settings.md).
+- Mail is now written in every panel language (Spanish, Ukrainian, Turkish and Italian too).
+
 ## 2026.11.28.1654 — New languages
 
 - The panel now also works in **Spanish, Ukrainian, Turkish and Italian** (pick the language in the menu). Mail for these languages comes in English.
