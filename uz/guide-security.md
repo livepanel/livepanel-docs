@@ -20,7 +20,7 @@ Server va saytlarni himoyalash uchun panelda mavjud imkoniyatlar — bir joyda. 
 - [ ] Ishlatilmayotgan xizmatlarni to‘xtating (masalan pochta kerak bo‘lmasa) — [Tizim xizmatlari](services.md).
 - [ ] Bazaga tashqi ulanishni faqat aniq IP’larga bering, `%` ishlatmang — [Ma’lumotlar bazalari](databases.md).
 - [ ] SSH’ni faqat kerakli akkauntlarga yoqing.
-- [ ] Panel avtomatik yangilanadi — litsenziya faol turishini kuzating — [Yangilanishlar va xabarnomalar](updates-notifications.md).
+- [ ] Panelni yangi versiyada saqlang: **Avtomatik yangilash**ni yoqing yoki yuqorida chiqqan **Yangilash** tugmasini bosing; litsenziya faol bo‘lsin — [Yangilanishlar va xabarnomalar](updates-notifications.md).
 
 ## Saytlar
 

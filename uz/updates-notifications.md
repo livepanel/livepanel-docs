@@ -2,16 +2,22 @@
 
 ## Avtomatik yangilanish
 
-LivePanel o‘zini avtomatik yangilaydi — qo‘lda hech narsa qilish shart emas.
+Yangilanishlar **Sozlamalar → Avtomatik yangilash** bo‘limida boshqariladi (faqat administrator).
+
+- **Yangilanishlarni avtomatik qabul qilish** — yoqilgan bo‘lsa, yangi versiya chiqishi bilan panel o‘zi yangilanadi.
+- Standart holatda **o‘chirilgan**: yangi versiya chiqsa, ekranning yuqori o‘ng burchagida `{versiya} Yangilanish mavjud` xabari va **Yangilash** tugmasi chiqadi. Tugma bosilganda panel yangilanadi va sahifa yangi versiyada qayta ochiladi. Yangilamaguningizcha xabar turaveradi; panel eng oxirgi versiyaga o‘tgach xabar yo‘qoladi.
+- Bo‘limda o‘rnatilgan versiya va mavjud yangilanish ham ko‘rinadi, **Yangilash** tugmasi u yerda ham bor.
+
+Qanday ishlaydi:
 
 - Server yangi versiyani **har 6 soatda** tekshiradi. Administrator panelga kirganda ham tekshiruv boshlanadi.
 - Yangi versiya livepanel.uz’dan yuklanadi va **raqamli imzosi** hamda nazorat summasi tekshiriladi — imzosiz yoki o‘zgartirilgan paket o‘rnatilmaydi.
-- O‘rnatilgandan keyin panel ishlashi tekshiriladi; muammo bo‘lsa, **oldingi versiyaga avtomatik qaytadi**.
+- O‘rnatilgandan keyin panel ishlashi tekshiriladi; muammo bo‘lsa, **oldingi versiyaga avtomatik qaytadi** va panel «Yangilab bo‘lmadi» deb ko‘rsatadi.
 - Saytlar yangilanish paytida ishlashda davom etadi.
 
 Joriy versiya kirish sahifasining pastida va chap menyuning pastida ko‘rinadi (masalan `2026.11.25`).
 
-Yangilanishni darhol ishga tushirish kerak bo‘lsa, serverda:
+Yangi versiyani darhol tekshirish kerak bo‘lsa, serverda:
 
 ```bash
 systemctl start livepanel-update.service

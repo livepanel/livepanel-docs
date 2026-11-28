@@ -1,6 +1,11 @@
 # Yangiliklar
 
-LivePanel o‘zini avtomatik yangilaydi (har 6 soatda tekshiradi, administrator kirganda ham). Versiya raqami — sana va vaqt (UTC): `YYYY.MM.DD.HHMM`. Joriy versiya panel menyusining pastida ko‘rinadi. Bu sahifada oxirgi o‘zgarishlar — yangisi tepada.
+LivePanel yangi versiyani har 6 soatda va administrator kirganda tekshiradi; u avtomatik yoki **Yangilash** tugmasi bilan o‘rnatiladi — [Yangilanishlar va xabarnomalar](updates-notifications.md). Versiya raqami — sana va vaqt (UTC): `YYYY.MM.DD.HHMM`. Joriy versiya panel menyusining pastida ko‘rinadi. Bu sahifada oxirgi o‘zgarishlar — yangisi tepada.
+
+## 2026.11.28.1534 — Avtomatik yangilash sozlamasi
+
+- **Sozlamalar → Avtomatik yangilash**: yangilanishlarni avtomatik qabul qilishni yoqish yoki o‘chirish mumkin. Standart holatda o‘chirilgan.
+- O‘chirilgan bo‘lsa, yangi versiya chiqqanda ekranning yuqori o‘ng burchagida `{versiya} Yangilanish mavjud` xabari va **Yangilash** tugmasi chiqadi; panel tugma bosilganda yangilanadi — [Yangilanishlar va xabarnomalar](updates-notifications.md).
 
 ## 2026.11.26.1641 — Veb-firewall (WAF) va wildcard SSL boshqa DNS bilan
 

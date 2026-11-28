@@ -51,3 +51,4 @@ Bitta IP manzildan belgilangan vaqt ichida shuncha marta noto‘g‘ri parol kir
 
 - **Zaxira serverlari** — Google Drive va Dropbox: [Zaxira nusxalar](backups.md).
 - **Panel SSL** va **Panel manzillari** — [Panel manzili va SSL](panel-access.md).
+- **Avtomatik yangilash** — yangilanishlarni avtomatik qabul qilish (standart holatda o‘chirilgan) va **Yangilash** tugmasi: [Yangilanishlar va xabarnomalar](updates-notifications.md).

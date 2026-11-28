@@ -1,6 +1,11 @@
 # What’s new
 
-LivePanel updates itself (it checks every 6 hours and when an administrator signs in). The version number is the date and time (UTC): `YYYY.MM.DD.HHMM`. The current version is shown at the bottom of the panel menu. This page lists the latest changes, newest first.
+LivePanel checks for a new version every 6 hours and when an administrator signs in; it installs automatically or with the **Update** button — [Updates and notifications](updates-notifications.md). The version number is the date and time (UTC): `YYYY.MM.DD.HHMM`. The current version is shown at the bottom of the panel menu. This page lists the latest changes, newest first.
+
+## 2026.11.28.1534 — Automatic updates setting
+
+- **Settings → Automatic updates**: accepting updates automatically can be turned on or off. It is off by default.
+- When off, a new version shows the notice `{version} Update available` with an **Update** button at the top right of the screen; the panel updates when you press it — [Updates and notifications](updates-notifications.md).
 
 ## 2026.11.26.1641 — Web firewall (WAF) and wildcard SSL with outside DNS
 

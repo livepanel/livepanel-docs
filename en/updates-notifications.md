@@ -2,16 +2,22 @@
 
 ## Automatic updates
 
-LivePanel updates itself — nothing to do by hand.
+Updates are managed in **Settings → Automatic updates** (administrator only).
+
+- **Accept updates automatically** — when on, the panel updates itself as soon as a new version is out.
+- It is **off by default**: when a new version is out, the notice `{version} Update available` with an **Update** button appears at the top right of the screen. Pressing it updates the panel and reopens the page in the new version. The notice stays until you update; once the panel is on the latest version it goes away.
+- The section also shows the installed version and the available update, with an **Update** button too.
+
+How it works:
 
 - The server checks for a new version **every 6 hours**. A check also starts when an administrator signs in to the panel.
 - The new version is downloaded from livepanel.uz and its **digital signature** and checksum are verified — an unsigned or altered package is never installed.
-- After installing, the panel checks that it works; if there is a problem, it **rolls back to the previous version automatically**.
+- After installing, the panel checks that it works; if there is a problem, it **rolls back to the previous version automatically** and shows “The update failed”.
 - Sites keep working during the update.
 
 The current version is shown at the bottom of the sign-in page and of the left menu (e.g. `2026.11.25`).
 
-To start an update right away, run on the server:
+To check for a new version right away, run on the server:
 
 ```bash
 systemctl start livepanel-update.service

@@ -20,7 +20,7 @@ The panel’s tools for protecting the server and sites — in one place. Go thr
 - [ ] Stop services you do not use (e.g. mail, if not needed) — [System services](services.md).
 - [ ] Give outside database access only to exact IPs, never `%` — [Databases](databases.md).
 - [ ] Turn SSH on only for the accounts that need it.
-- [ ] The panel updates itself — keep the license active — [Updates and notifications](updates-notifications.md).
+- [ ] Keep the panel on the new version: turn on **Automatic updates** or press the **Update** button at the top; keep the license active — [Updates and notifications](updates-notifications.md).
 
 ## Sites
 

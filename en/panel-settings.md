@@ -51,3 +51,4 @@ An IP address is blocked after this many wrong passwords within the given time. 
 
 - **Backup servers** — Google Drive and Dropbox: [Backups](backups.md).
 - **Panel SSL** and **Panel addresses** — [Panel address and SSL](panel-access.md).
+- **Automatic updates** — accepting updates automatically (off by default) and the **Update** button: [Updates and notifications](updates-notifications.md).
