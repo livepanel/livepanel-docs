@@ -47,6 +47,6 @@ Yangi parol so‘raladi. Bo‘sh qoldirilsa, panel parolni o‘zi yaratib, ekran
 livepanel remove
 ```
 
-Saytlar va ularning fayllari, ma’lumotlar bazalari, pochta, SSL sertifikatlar, zaxira nusxalar, veb, baza, FTP va pochta serverlari hamda **Ilovalar** bo‘limidan o‘rnatilgan dasturlar o‘chiriladi. Buyruq uch marta tasdiq so‘raydi: «Ha», ekranda ko‘rsatilgan bir martalik kod va yana bir «Ha».
+Saytlar va ularning fayllari, ma’lumotlar bazalari, pochta, SSL sertifikatlar, zaxira nusxalar, veb, baza, FTP va pochta serverlari hamda **Ilovalar** bo‘limidan o‘rnatilgan dasturlar o‘chiriladi. Buyruq uch marta tasdiq so‘raydi: `Y` (Yes), ekranda ko‘rsatilgan bir martalik kod va yana bir `Y`. Keyin har bir bosqich o‘z qatorida 0% dan 100% gacha bajarilish foizini ko‘rsatadi.
 
 > Bu amalni qaytarib bo‘lmaydi. Avval kerakli ma’lumotlarning zaxira nusxasini oling — [Zaxira nusxalar](backups.md).

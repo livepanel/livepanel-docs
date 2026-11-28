@@ -47,6 +47,6 @@ The command asks for the new password. Leave it empty and the panel makes one an
 livepanel remove
 ```
 
-This removes the sites and their files, databases, mail, SSL certificates, backups, the web, database, FTP and mail servers, and the programs from **Applications**. The command asks for confirmation three times: “Yes”, a one-time code shown on the screen, and one more “Yes”.
+This removes the sites and their files, databases, mail, SSL certificates, backups, the web, database, FTP and mail servers, and the programs from **Applications**. The command asks for confirmation three times: `Y` (Yes), a one-time code shown on the screen, and one more `Y`. Then each step shows its own progress from 0% to 100% on its line.
 
 > This cannot be undone. Back up the data you need first — [Backups](backups.md).
