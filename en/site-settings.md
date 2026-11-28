@@ -68,3 +68,14 @@ Fields by type:
 - **Burst** — allow short spikes and serve them without delay.
 
 Restricting access by IP — [Site security and scanning](site-security.md).
+
+## Speed (Pro)
+
+- **Page cache** — Nginx keeps ready PHP pages and serves them without running PHP. **Keep a page (minutes)** sets for how long. Logged-in users, carts and checkout, admin pages, forms (POST) and addresses with parameters are never cached. WordPress clears the cache by itself when content changes; there is a **Clear cache** button too. Only for PHP sites with the PHP-FPM or FastCGI handler.
+- **WebP and AVIF images** — WebP and AVIF copies are made next to JPEG/PNG images and sent to the browsers that support them; the originals do not change. New images are processed every 10 minutes. When turned off, the copies are removed.
+- **Redis for this site** — a Redis of the site’s own, reached only by the site user through a socket. The section shows the **Memory limit (MB)**, the memory used, a **Clear Redis** button and ready lines for WordPress (wp-config.php) and Laravel (.env).
+
+## Protection
+
+- **Attack mode (Premium)** — every visitor first passes a short browser check (about 2 seconds, once in 12 hours); bots without JavaScript never reach the site. Turn it on only during an attack: search engines, APIs, payment callbacks and webhooks cannot pass the check either.
+- **Blocking by country (Pro)** — **Only the chosen countries** or **All but the chosen countries**; the others get “403 Forbidden”. Country data: the free DB-IP database (refreshed monthly).

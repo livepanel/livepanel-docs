@@ -2,6 +2,12 @@
 
 LivePanel yangi versiyani har 6 soatda va administrator kirganda tekshiradi; u avtomatik yoki **Yangilash** tugmasi bilan o‘rnatiladi — [Yangilanishlar va xabarnomalar](updates-notifications.md). Versiya raqami — sana va vaqt (UTC): `YYYY.MM.DD.HHMM`. Joriy versiya panel menyusining pastida ko‘rinadi. Bu sahifada oxirgi o‘zgarishlar — yangisi tepada.
 
+## 2026.11.28.1749 — Tezlik va himoya funksiyalari
+
+- **Pro**: saytga **sahifa keshi** (PHP sahifalar bir necha barobar tez), **WebP va AVIF rasmlar** (30–70% yengil), **saytga alohida Redis** va **davlat bo‘yicha bloklash** — sayt sozlamalarida «Tezlik» va «Himoya» bo‘limlari — [Sayt sozlamalari](site-settings.md).
+- **Premium**: **hujum rejimi** — bot hujumi paytida tashrif buyuruvchilar qisqa brauzer tekshiruvidan o‘tadi.
+- Panelning o‘ziga davlat bo‘yicha kirish (Pro) — **Sozlamalar → Login himoyasi** — [Panel sozlamalari](panel-settings.md).
+
 ## 2026.11.28.1714 — Yangilanish jadvali va virus tekshiruvi
 
 - **Avtomatik yangilash** endi jadval bo‘yicha ishlaydi: har 1–7 kunda bir marta, tanlangan soatda (AM/PM) — [Yangilanishlar va xabarnomalar](updates-notifications.md).

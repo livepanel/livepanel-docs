@@ -48,6 +48,10 @@ Bitta IP manzildan belgilangan vaqt ichida shuncha marta noto‘g‘ri parol kir
 - Shubhali fayl topilsa, administratorning tiklash emailiga xat keladi.
 - ClamAV «Ilovalar» bo‘limidan o‘rnatiladi; o‘rnatilmagan bo‘lsa, tekshiruv ishlamaydi.
 
+## Panelga davlat bo‘yicha kirish (Pro)
+
+**Sozlamalar → Login himoyasi** pastida: panel faqat tanlangan davlatlardan (yoki ulardan tashqari) ochiladi. Login himoyasidagi oq ro‘yxat va mahalliy manzillar har doim kira oladi. O‘zingizni bloklaydigan qoidani panel saqlamaydi. Agar baribir kira olmasangiz, serverda: `livepanel panel-geo off`.
+
 ## Brending (administrator va reseller)
 
 ![Brending](../images/branding.png)

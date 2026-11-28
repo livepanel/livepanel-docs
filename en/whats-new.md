@@ -2,6 +2,12 @@
 
 LivePanel checks for a new version every 6 hours and when an administrator signs in; it installs automatically or with the **Update** button — [Updates and notifications](updates-notifications.md). The version number is the date and time (UTC): `YYYY.MM.DD.HHMM`. The current version is shown at the bottom of the panel menu. This page lists the latest changes, newest first.
 
+## 2026.11.28.1749 — Speed and protection
+
+- **Pro**: **page cache** (PHP pages many times faster), **WebP and AVIF images** (30–70% lighter), **a Redis per site** and **blocking by country** — the Speed and Protection sections of the site settings — [Site settings](site-settings.md).
+- **Premium**: **attack mode** — during a bot attack visitors pass a short browser check.
+- Panel access by country (Pro) — **Settings → Login protection** — [Panel settings](panel-settings.md).
+
 ## 2026.11.28.1714 — Update schedule and virus scan
 
 - **Automatic updates** now run on a schedule: every 1–7 days at the time you choose (AM/PM) — [Updates and notifications](updates-notifications.md).

@@ -13,6 +13,8 @@ The panel needs a license for this installation. Licenses are issued at livepane
 | Per-account limits on domains, disk, RAM, databases and reseller users | — | ✅ | ✅ |
 | Hosting automation API (tokens) | — | — | ✅ |
 | Wildcard SSL certificate (`*.domain`) | — | — | ✅ |
+| Page cache, WebP/AVIF images, a Redis per site, blocking by country | — | ✅ | ✅ |
+| Attack mode (protection from L7 attacks) | — | — | ✅ |
 
 Current prices: [livepanel.uz](https://livepanel.uz) → **Pricing**.
 

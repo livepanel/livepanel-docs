@@ -13,6 +13,8 @@ Panel ishlashi uchun shu o‘rnatishga tegishli litsenziya kerak. Litsenziya liv
 | Akkauntlar bo‘yicha domen, disk, RAM, baza va reseller limitlari | — | ✅ | ✅ |
 | Hosting avtomatizatsiyasi API (tokenlar) | — | — | ✅ |
 | Wildcard SSL sertifikat (`*.domen`) | — | — | ✅ |
+| Sahifa keshi, WebP/AVIF rasmlar, saytga alohida Redis, davlat bo‘yicha bloklash | — | ✅ | ✅ |
+| Hujum rejimi (L7 hujumdan himoya) | — | — | ✅ |
 
 Joriy narxlar: [livepanel.uz](https://livepanel.uz) → **Narxlar**.
 

@@ -48,6 +48,10 @@ An IP address is blocked after this many wrong passwords within the given time. 
 - If suspicious files are found, the administrator’s recovery email gets a message.
 - ClamAV is installed in Applications; without it the scan does not run.
 
+## Panel access by country (Pro)
+
+**Settings → Login protection**, at the bottom: the panel opens only from the chosen countries (or from all but them). The login protection allowlist and local addresses always get in. The panel does not save a rule that would lock you out. If you still cannot get in, on the server: `livepanel panel-geo off`.
+
 ## Branding (administrator and reseller)
 
 ![Branding](../images/branding.png)

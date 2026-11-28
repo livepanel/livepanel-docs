@@ -68,3 +68,14 @@ Turga qarab maydonlar:
 - **Burst** — qisqa vaqtli ko‘p so‘rovlarga ruxsat va ularni kechiktirmaslik.
 
 Saytga kirishni IP bo‘yicha cheklash — [Sayt xavfsizligi va skanerlash](site-security.md).
+
+## Tezlik (Pro)
+
+- **Sahifa keshi** — Nginx PHP sahifalarini tayyor holda saqlab, PHP’ni ishga tushirmasdan beradi. **Sahifani saqlash (daqiqa)** qancha vaqt saqlanishini belgilaydi. Tizimga kirgan foydalanuvchilar, savat va to‘lov, admin sahifalar, formalar (POST) va parametrli manzillar hech qachon keshlanmaydi. WordPress’da kontent o‘zgarganda kesh o‘zi tozalanadi; **Keshni tozalash** tugmasi ham bor. Faqat PHP-FPM yoki FastCGI ishlovchili PHP saytlar uchun.
+- **WebP va AVIF rasmlar** — JPEG/PNG rasmlar yonida WebP va AVIF nusxalari yaratiladi va ularni qo‘llaydigan brauzerlarga beriladi; asl rasmlar o‘zgarmaydi. Yangi rasmlar har 10 daqiqada qayta ishlanadi. O‘chirilganda nusxalar o‘chiriladi.
+- **Shu sayt uchun Redis** — saytga alohida Redis, unga faqat sayt foydalanuvchisi soket orqali ulanadi. **Xotira limiti (MB)**, ishlatilgan xotira, **Redis’ni tozalash** tugmasi va WordPress (wp-config.php) hamda Laravel (.env) uchun tayyor sozlama qatorlari ko‘rsatiladi.
+
+## Himoya
+
+- **Hujum rejimi (Premium)** — har bir tashrif buyuruvchi avval qisqa brauzer tekshiruvidan o‘tadi (taxminan 2 soniya, 12 soatda bir marta); JavaScript ishlatmaydigan botlar saytga yetib bormaydi. Faqat hujum paytida yoqing: qidiruv tizimlari, API, to‘lov callback’lari va webhook’lar ham tekshiruvdan o‘tolmaydi.
+- **Davlat bo‘yicha bloklash (Pro)** — **Faqat tanlangan davlatlar** yoki **Tanlanganlardan tashqari hammasi**; boshqalar «403 Forbidden» oladi. Davlatlar ma’lumoti — DB-IP’ning bepul bazasi (har oy yangilanadi).
